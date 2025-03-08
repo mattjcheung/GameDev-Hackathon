@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bujf7opdrt8td"]
+[gd_scene load_steps=8 format=3 uid="uid://bujf7opdrt8td"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6kqqu"]
 [ext_resource type="Texture2D" uid="uid://d38ceuoo614k4" path="res://assets/bg.png" id="1_n71cq"]
 [ext_resource type="PackedScene" uid="uid://cycqjcw1lf5h" path="res://circuitry.tscn" id="2_am7mg"]
+[ext_resource type="Texture2D" uid="uid://bn441rtc6we0h" path="res://assets/chip-background.png" id="2_o0gwi"]
 [ext_resource type="PackedScene" uid="uid://bfssbjha3dfc" path="res://drone.tscn" id="3_jbdy6"]
 [ext_resource type="PackedScene" uid="uid://ty22dkfjao1a" path="res://ground.tscn" id="4_lipm4"]
+[ext_resource type="PackedScene" uid="uid://btn81q3mymwkh" path="res://button.tscn" id="6_mjw4s"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_6kqqu")
@@ -19,14 +21,38 @@ offset = Vector2(432, 384)
 
 [node name="Ground" parent="." instance=ExtResource("4_lipm4")]
 z_index = 1
+monitorable = true
+priority = 1
 
 [node name="CircuitTimer" type="Timer" parent="."]
 wait_time = 1.5
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 10.0
+
+[node name="ButtonTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Button" parent="." instance=ExtResource("6_mjw4s")]
+z_index = 1
+position = Vector2(809, 529)
+
+[node name="win" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(434, 469)
+scale = Vector2(3.32885, 3.55961)
+texture = ExtResource("2_o0gwi")
+
+[node name="Label" type="Label" parent="win"]
+offset_left = -96.3547
+offset_top = -37.1529
+offset_right = 81.6453
+offset_bottom = 18.8471
+text = "Click anywhere to start"
 
 [connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
 [connection signal="hit" from="Ground" to="Drone" method="_on_ground_hit"]
 [connection signal="timeout" from="CircuitTimer" to="." method="_on_circuit_timer_timeout"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="ButtonTimer" to="." method="_on_button_timer_timeout"]
+[connection signal="hit" from="Button" to="." method="_on_button_hit"]

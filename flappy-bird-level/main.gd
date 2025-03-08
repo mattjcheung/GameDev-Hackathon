@@ -13,6 +13,7 @@ var circuits : Array
 const CIRCUIT_DELAY : int = 100
 const CIRCUIT_RANGE : int = 200
 var time_elapsed : bool = false
+var button_visible : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,12 +30,14 @@ func new_game():
 	circuits.clear()
 	generate_circuits()
 	$Drone.reset()
+	$win.visible=true
 	
 func _input(event):
 	if game_over == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 				if game_running == false:
+					$win.visible=false
 					start_game()
 				else:
 					if $Drone.flying:
@@ -48,6 +51,9 @@ func start_game():
 	$Drone.flap()
 	$CircuitTimer.start()
 	$GameTimer.start()
+	$Button.start()
+	
+
 	
 func _process(delta):
 	if game_running:
@@ -57,6 +63,9 @@ func _process(delta):
 		$Ground.position.x=-scroll
 		for circuit in circuits:
 			circuit.position.x -= SCROLL_SPEED
+		if button_visible:
+			$Button.position.x -= SCROLL_SPEED
+		
 		
 
 
@@ -88,10 +97,20 @@ func _on_circuit_timer_timeout() -> void:
 	if time_elapsed == false:
 		generate_circuits()
 
-func _on_ground_hit():
-	$Drone.falling = false
-	stop_game()
-
-
 func _on_game_timer_timeout() -> void:
 	time_elapsed = true
+	$ButtonTimer.start()
+	
+
+func _on_button_timer_timeout() -> void:
+	button_visible = true
+	$Button.appear()
+
+
+func _on_button_hit() -> void:
+	pass
+
+
+func _on_ground_hit() -> void:
+	$Drone.falling = false
+	stop_game()
