@@ -5,7 +5,7 @@ extends Node
 var game_running : bool
 var game_over : bool
 var scroll
-var score
+var win :bool = false
 const SCROLL_SPEED : int = 4
 var screen_size : Vector2i
 var ground_height : int
@@ -25,19 +25,24 @@ func new_game():
 	#reset variables
 	game_running = false
 	game_over = false
-	score = 0
 	scroll = 0
 	circuits.clear()
 	generate_circuits()
 	$Drone.reset()
-	$win.visible=true
+	$Title.visible=true
+	$End.visible = false
+	get_tree().call_group("circuits", "queue_free")
+	circuits.clear()
+	#generate starting pipes
+	generate_circuits()
+	
 	
 func _input(event):
 	if game_over == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 				if game_running == false:
-					$win.visible=false
+					$Title.visible=false
 					start_game()
 				else:
 					if $Drone.flying:
@@ -108,9 +113,19 @@ func _on_button_timer_timeout() -> void:
 
 
 func _on_button_hit() -> void:
+	win = true
+	$EndTimer.start()
 	pass
 
 
 func _on_ground_hit() -> void:
 	$Drone.falling = false
+	$EndTimer.start()
 	stop_game()
+
+
+func _on_end_timer_timeout() -> void:
+	if win:
+		$End.visible = true
+	else:
+		new_game()

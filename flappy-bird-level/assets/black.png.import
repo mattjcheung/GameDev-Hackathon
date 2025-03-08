@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn441rtc6we0h"
-valid=false
+uid="uid://cf0x2s3p75evq"
+path="res://.godot/imported/black.png-0c928088330c4cddf9e28b960b6ccae3.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/chip-background.png"
+source_file="res://assets/black.png"
+dest_files=["res://.godot/imported/black.png-0c928088330c4cddf9e28b960b6ccae3.ctex"]
 
 [params]
 

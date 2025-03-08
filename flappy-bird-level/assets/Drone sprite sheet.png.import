@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn441rtc6we0h"
-valid=false
+uid="uid://bg0ltl0ted6bm"
+path="res://.godot/imported/Drone sprite sheet.png-6204c692aab427524beaeb2ae946f698.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/chip-background.png"
+source_file="res://assets/Drone sprite sheet.png"
+dest_files=["res://.godot/imported/Drone sprite sheet.png-6204c692aab427524beaeb2ae946f698.ctex"]
 
 [params]
 
