@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7sw5a1uowc4y"]
+
+[ext_resource type="Script" path="res://Lab_Room_2/Lab_main.gd" id="1_jl4dq"]
+[ext_resource type="PackedScene" uid="uid://be2ilbacpejo3" path="res://Lab_Room_2/Lab.tscn" id="2_e8al8"]
+[ext_resource type="PackedScene" uid="uid://bajir8gidmg11" path="res://Lab_Room_2/monkey.tscn" id="3_ur1yv"]
+[ext_resource type="PackedScene" uid="uid://d00o0xpgxm5u" path="res://Lab_Room_2/beacon.tscn" id="4_673km"]
+[ext_resource type="PackedScene" uid="uid://cu7w4q6q4ynh7" path="res://Lab_Room_2/access_panel.tscn" id="5_xmqi8"]
+[ext_resource type="PackedScene" uid="uid://nhtmbhg6eyno" path="res://Lab_Room_2/door.tscn" id="6_ggtdf"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_jl4dq")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_e8al8")]
+
+[node name="monkey" parent="." instance=ExtResource("3_ur1yv")]
+z_index = 1
+position = Vector2(12, 198)
+
+[node name="Beacon" parent="." instance=ExtResource("4_673km")]
+position = Vector2(405, 204)
+
+[node name="AccessPanel" parent="." instance=ExtResource("5_xmqi8")]
+position = Vector2(-125, 10)
+scale = Vector2(1.03887, 1.08767)
+
+[node name="Door" parent="." instance=ExtResource("6_ggtdf")]
+position = Vector2(492, 174)
+scale = Vector2(0.68, 0.640001)
+
+[connection signal="access" from="AccessPanel" to="." method="_on_access_panel_access"]
