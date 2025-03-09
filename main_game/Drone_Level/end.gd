@@ -1,7 +1,12 @@
 extends CanvasLayer
 
-signal restart
+signal return_lab
+
+
+
+
+	
 
 
 func _on_restart_button_pressed() -> void:
-	restart.emit()
+	return_lab.emit()

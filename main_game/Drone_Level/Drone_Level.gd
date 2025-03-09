@@ -148,3 +148,11 @@ func _on_end_timer_timeout() -> void:
 func _on_fail_restart() -> void:
 	$Fail.hide()
 	new_game()
+	
+
+
+	
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Lab_Room_2/Lab_post_game.tscn")
