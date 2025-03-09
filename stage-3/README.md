@@ -1,3 +1,4 @@
-The tutorial for this project is here (made by me): https://youtu.be/94r4mvvccsg
+Reference:
+Learnt how to make this puzzle with a helpful course by 'ThinkWithGames' on youtube
 
-All my demos are on the Asset Library: https://godotengine.org/asset-library/asset?user=ThinkWithGames
+Graphics and Textures edited by me (hugozbor)
