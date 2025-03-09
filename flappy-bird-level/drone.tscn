@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://bfssbjha3dfc"]
 
 [ext_resource type="Script" path="res://drone.gd" id="1_s70j8"]
-[ext_resource type="Texture2D" uid="uid://wymcftro63xv" path="res://assets/drone1.png" id="2_lvv1u"]
-[ext_resource type="Texture2D" uid="uid://b4efg38yo12et" path="res://assets/drone2.png" id="3_8nvsu"]
-[ext_resource type="Texture2D" uid="uid://qlgafgyar87y" path="res://assets/drone3.png" id="4_bhopk"]
-[ext_resource type="Texture2D" uid="uid://ct5fw4gc286fi" path="res://assets/drone4.png" id="5_sn6vg"]
+[ext_resource type="Texture2D" path="res://assets/drone1.png" id="2_lvv1u"]
+[ext_resource type="Texture2D" path="res://assets/drone2.png" id="3_8nvsu"]
+[ext_resource type="Texture2D" path="res://assets/drone3.png" id="4_bhopk"]
+[ext_resource type="Texture2D" path="res://assets/drone4.png" id="5_sn6vg"]
 [ext_resource type="Texture2D" uid="uid://bg0ltl0ted6bm" path="res://assets/Drone sprite sheet.png" id="6_bopwj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a14g4"]

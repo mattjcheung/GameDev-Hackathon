@@ -14,11 +14,12 @@ const CIRCUIT_DELAY : int = 100
 const CIRCUIT_RANGE : int = 200
 var time_elapsed : bool = false
 var button_visible : bool = false
+var run_time : int = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_window().size
-	ground_height = $Ground.get_node("Sprite2D").texture.get_height()
+	ground_height = $Ground.get_node("Sprite2D2").texture.get_height()
 	new_game()
 
 func new_game():
@@ -28,13 +29,16 @@ func new_game():
 	scroll = 0
 	circuits.clear()
 	generate_circuits()
+	$Fail.hide()
 	$Drone.reset()
 	$Title.visible=true
 	$End.visible = false
+	$EndTimer.stop()
 	get_tree().call_group("circuits", "queue_free")
 	circuits.clear()
-	#generate starting pipes
-	generate_circuits()
+	$Button.start()
+	
+	
 	
 	
 func _input(event):
@@ -56,20 +60,23 @@ func start_game():
 	$Drone.flap()
 	$CircuitTimer.start()
 	$GameTimer.start()
-	$Button.start()
-	
+	$Fail.hide()
+	generate_circuits()
 
 	
 func _process(delta):
 	if game_running:
+		$Fail.hide()
 		scroll+= SCROLL_SPEED
 		if scroll>=screen_size.x:
 			scroll = 0
 		$Ground.position.x=-scroll
+		
 		for circuit in circuits:
 			circuit.position.x -= SCROLL_SPEED
 		if button_visible:
 			$Button.position.x -= SCROLL_SPEED
+		
 		
 		
 
@@ -89,9 +96,12 @@ func check_top():
 
 func stop_game():
 	$CircuitTimer.stop()
+	$GameTimer.stop()
+	$ButtonTimer.stop()
 	$Drone.flying = false
 	game_running=false
 	game_over = true
+	
 	
 func drone_hit():
 	$Drone.falling = true
@@ -114,8 +124,11 @@ func _on_button_timer_timeout() -> void:
 
 func _on_button_hit() -> void:
 	win = true
+	$Drone.falling = false
 	$EndTimer.start()
-	pass
+	stop_game()
+
+	
 
 
 func _on_ground_hit() -> void:
@@ -128,4 +141,9 @@ func _on_end_timer_timeout() -> void:
 	if win:
 		$End.visible = true
 	else:
-		new_game()
+		$Fail.show()
+
+
+func _on_fail_restart() -> void:
+	$Fail.hide()
+	new_game()

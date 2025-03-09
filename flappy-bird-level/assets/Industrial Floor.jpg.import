@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct5fw4gc286fi"
-path="res://.godot/imported/drone4.png-a3a520ac5a3c2a8dae7ac72280c0a610.ctex"
+uid="uid://buq24y67hem0i"
+path="res://.godot/imported/Industrial Floor.jpg-f39daddfa2077b8a4e55f5dc85769f3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/drone4.png"
-dest_files=["res://.godot/imported/drone4.png-a3a520ac5a3c2a8dae7ac72280c0a610.ctex"]
+source_file="res://assets/Industrial Floor.jpg"
+dest_files=["res://.godot/imported/Industrial Floor.jpg-f39daddfa2077b8a4e55f5dc85769f3b.ctex"]
 
 [params]
 

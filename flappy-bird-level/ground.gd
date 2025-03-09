@@ -7,4 +7,4 @@ func _ready():
 
 func _on_body_entered(body):
 	hit.emit()
-	print("hit")
+	

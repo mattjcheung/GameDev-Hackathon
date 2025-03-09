@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qlgafgyar87y"
-path="res://.godot/imported/drone3.png-768783217c997fbe6151cfaa67e3ce8d.ctex"
+uid="uid://d4b4shkc5vbgc"
+path="res://.godot/imported/pixil-frame-0 (2).png-571ba1d405aef582a68e5ede27d25501.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/drone3.png"
-dest_files=["res://.godot/imported/drone3.png-768783217c997fbe6151cfaa67e3ce8d.ctex"]
+source_file="res://assets/pixil-frame-0 (2).png"
+dest_files=["res://.godot/imported/pixil-frame-0 (2).png-571ba1d405aef582a68e5ede27d25501.ctex"]
 
 [params]
 

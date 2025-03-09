@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://btu2bwmjxey1b"]
+
+[ext_resource type="Script" path="res://fail.gd" id="1_iwp4q"]
+[ext_resource type="Texture2D" uid="uid://d4b4shkc5vbgc" path="res://assets/pixil-frame-0 (2).png" id="2_cj11s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uquh0"]
+texture = ExtResource("2_cj11s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kj7sl"]
+texture = ExtResource("2_cj11s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ggm5"]
+texture = ExtResource("2_cj11s")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_iwp4q")
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 343.0
+offset_right = 601.0
+offset_bottom = 663.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_uquh0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kj7sl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ggm5")
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

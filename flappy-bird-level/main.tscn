@@ -1,21 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://bujf7opdrt8td"]
+[gd_scene load_steps=10 format=3 uid="uid://bujf7opdrt8td"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6kqqu"]
 [ext_resource type="PackedScene" uid="uid://cycqjcw1lf5h" path="res://circuitry.tscn" id="2_am7mg"]
-[ext_resource type="Texture2D" uid="uid://cf0x2s3p75evq" path="res://assets/black.png" id="3_6jx60"]
+[ext_resource type="Texture2D" uid="uid://c1x7uq1imibda" path="res://assets/bgg.jpg" id="3_ff10u"]
 [ext_resource type="PackedScene" uid="uid://bfssbjha3dfc" path="res://drone.tscn" id="3_jbdy6"]
 [ext_resource type="PackedScene" uid="uid://ty22dkfjao1a" path="res://ground.tscn" id="4_lipm4"]
 [ext_resource type="PackedScene" uid="uid://btn81q3mymwkh" path="res://button.tscn" id="6_mjw4s"]
+[ext_resource type="Texture2D" uid="uid://c6bqkcyj16sq4" path="res://assets/pixil-frame-0 (4).png" id="7_dr6cd"]
+[ext_resource type="PackedScene" uid="uid://btu2bwmjxey1b" path="res://fail.tscn" id="7_f8wn2"]
+[ext_resource type="Texture2D" uid="uid://jt8od1havk3r" path="res://assets/pixil-frame-0 (3).png" id="8_xqft2"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_6kqqu")
 circuit_scene = ExtResource("2_am7mg")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(-1254.52, -915.829)
-scale = Vector2(3.92382, 3.39163)
-texture = ExtResource("3_6jx60")
+position = Vector2(76.485, -100.639)
+scale = Vector2(0.81485, 1.27473)
+texture = ExtResource("3_ff10u")
 offset = Vector2(432, 384)
+
+[node name="Area2D" parent="Background" instance=ExtResource("6_mjw4s")]
 
 [node name="Drone" parent="." instance=ExtResource("3_jbdy6")]
 
@@ -39,32 +44,18 @@ position = Vector2(809, 529)
 
 [node name="Title" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(435.8, 475.105)
+position = Vector2(427, 464)
 scale = Vector2(3.89511, 4.07907)
-texture = ExtResource("3_6jx60")
-
-[node name="Label" type="Label" parent="Title"]
-offset_left = -92.0
-offset_top = -26.0
-offset_right = 89.0
-offset_bottom = 42.0
-scale = Vector2(1.00364, 0.789424)
-text = "Click Anywhere to Start"
+texture = ExtResource("7_dr6cd")
 
 [node name="EndTimer" type="Timer" parent="."]
 
 [node name="End" type="Sprite2D" parent="."]
-position = Vector2(445.25, 470.25)
-scale = Vector2(3.89111, 4.06889)
-texture = ExtResource("3_6jx60")
+position = Vector2(425, 480)
+scale = Vector2(3.89111, 4.20889)
+texture = ExtResource("8_xqft2")
 
-[node name="Label" type="Label" parent="End"]
-offset_left = -101.835
-offset_top = -29.3078
-offset_right = -21.8347
-offset_bottom = -6.30776
-scale = Vector2(2.46095, 2.05178)
-text = "You Did It!"
+[node name="Fail" parent="." instance=ExtResource("7_f8wn2")]
 
 [connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
 [connection signal="hit" from="Ground" to="Drone" method="_on_ground_hit"]
@@ -73,3 +64,4 @@ text = "You Did It!"
 [connection signal="timeout" from="ButtonTimer" to="." method="_on_button_timer_timeout"]
 [connection signal="hit" from="Button" to="." method="_on_button_hit"]
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
+[connection signal="restart" from="Fail" to="." method="_on_fail_restart"]

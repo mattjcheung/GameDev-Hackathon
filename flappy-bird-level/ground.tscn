@@ -1,20 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://ty22dkfjao1a"]
 
 [ext_resource type="Script" path="res://ground.gd" id="1_imkn4"]
-[ext_resource type="Texture2D" uid="uid://cum5khv3jtce1" path="res://assets/ground.png" id="2_7cpg2"]
+[ext_resource type="Texture2D" uid="uid://dmagkr5uriqio" path="res://assets/Industrial Floor (3).jpg" id="2_8jtdh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcpjv"]
-size = Vector2(1727.5, 150)
+size = Vector2(1739.75, 150)
 
 [node name="Ground" type="Area2D"]
 disable_mode = 2
 monitorable = false
 script = ExtResource("1_imkn4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(866, 853)
-texture = ExtResource("2_7cpg2")
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(874.739, 859.666)
+scale = Vector2(1.07934, 1.81945)
+texture = ExtResource("2_8jtdh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(868.25, 843)
+z_index = 2
+position = Vector2(876.125, 849)
 shape = SubResource("RectangleShape2D_bcpjv")
