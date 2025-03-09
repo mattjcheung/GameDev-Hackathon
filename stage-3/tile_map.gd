@@ -1,106 +1,100 @@
 extends TileMap
 
-var board_size = 4
-enum Layers{hidden,revealed}
-var SOURCE_NUM = 0
-const hidden_tile_coords = Vector2(6,2)
-const hidden_tile_alt = 1
-var revealed_spots = []
-var tile_pos_to_atlas_pos = {}
-var Attempts = 3
+var boardSize = 4
+enum Layers { hidden, revealed } #Hidden vs Revealed blocks
+var sourceNum = 0 
+const BlockCoords = Vector2(6, 2) # changing this breaks it idk why
+const BlockAlt = 1 #chooses which alternative tile to be the cover
+var revealedSpots = []
+var blockToAtlasPosition = {}
+var attempts = 3 #attempts remaining (10 seems best)
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	setup_board()
+	setup_blocks()
 	update_text()
-	pass # Replace with function body.
+	pass 
 
-func get_tiles_to_use():
-	var chosen_tile_coords = []
+#shuffle and choose random set of blocks to use
+func chooseBlocks(): 
+	var chosenBlockCoords = []
 	var options = range(10)
 	options.shuffle()
-	for i in range(board_size * int(board_size / 2)):
+	for i in range(boardSize * int(boardSize / 2)):
 		var current = Vector2(options.pop_back(), 1)
 		for j in range(2):
-			chosen_tile_coords.append(current)
-	chosen_tile_coords.shuffle()
-	return chosen_tile_coords
+			chosenBlockCoords.append(current)
+	chosenBlockCoords.shuffle()
+	return chosenBlockCoords
 
-func setup_board():
-	var cards_to_use = get_tiles_to_use()
-	for y in range(board_size):
-		for x in range(board_size):
-			var current_spot = Vector2(x, y)
-			place_single_face_down_card(current_spot)
-			var card_atlas_coords = cards_to_use.pop_back()
-			tile_pos_to_atlas_pos[current_spot] = card_atlas_coords
-			self.set_cell(Layers.revealed, current_spot, 
-						SOURCE_NUM, card_atlas_coords)
+func setup_blocks():
+	var blocksToUse = chooseBlocks()
+	for y in range(boardSize):
+		for x in range(boardSize):
+			var currentSpot = Vector2(x, y)
+			place_hidden_block(currentSpot)
+			var blockAtlasCoords = blocksToUse.pop_back()
+			blockToAtlasPosition[currentSpot] = blockAtlasCoords
+			self.set_cell(Layers.revealed, currentSpot, 
+						sourceNum, blockAtlasCoords)
 
 
-func place_single_face_down_card(coords: Vector2):
+func place_hidden_block(coords: Vector2):
 	self.set_cell(Layers.hidden, coords, 
-				SOURCE_NUM, hidden_tile_coords, hidden_tile_alt)
+				sourceNum, BlockCoords, BlockAlt)
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			var global_clicked = event.position
-			var pos_clicked = Vector2(local_to_map(to_local(global_clicked)))
-			print(pos_clicked)
-			var current_tile_alt = get_cell_alternative_tile(Layers.hidden, pos_clicked)
-			if current_tile_alt == 1 and revealed_spots.size() < 2:
-				self.set_cell(Layers.hidden, pos_clicked, -1)
-				revealed_spots.append(pos_clicked)
-				if revealed_spots.size() == 2:
-					when_two_cards_revealed()
+			var globalClicked = event.position
+			var posClicked = Vector2(local_to_map(to_local(globalClicked)))
+			print(posClicked)
+			var currentTileAlt = get_cell_alternative_tile(Layers.hidden, posClicked)
+			if currentTileAlt == 1 and revealedSpots.size() < 2:
+				self.set_cell(Layers.hidden, posClicked, -1)
+				revealedSpots.append(posClicked)
+				if revealedSpots.size() == 2:
+					match_found()
 
-func when_two_cards_revealed():
-	# the cards match
-	if tile_pos_to_atlas_pos[revealed_spots[0]] == tile_pos_to_atlas_pos[revealed_spots[1]]:
-		revealed_spots.clear()
+func match_found():
+	# blocks match
+	if blockToAtlasPosition[revealedSpots[0]] == blockToAtlasPosition[revealedSpots[1]]:
+		revealedSpots.clear()
 	else:
-		# the cards did not match
-		put_back_cards_with_delay()
+		# blocks didnt match
+		match_failed()
 		update_text()
 
 func update_text():
-	$"../CanvasLayer/attempts_label".text = "Attempts remaining: %d" % Attempts
+	$"../CanvasLayer/attempts_label".text = "Attempts remaining: %d" % attempts
 
 func update_text_to_red():
-	$"../CanvasLayer/attempts_label_red".text = "Attempts remaining: %d" % Attempts
-	
+	$"../CanvasLayer/attempts_label_red".text = "Attempts remaining: %d" % attempts
+
 func play_gong():
 	$"../gong".play()
 	
 func play_game_over():
 	$"../CanvasLayer/VideoStreamPlayer".play()
+
 func remove_red_text():
 	$"../CanvasLayer/attempts_label_red".text = " "
 	
-func put_back_cards_with_delay():
-	if Attempts == 1:
-		play_game_over()
-		Attempts -= 1
-		update_text_to_red()
-		await get_tree().create_timer(1.5).timeout
-		remove_red_text()
-		update_text()
-		for spot in revealed_spots:
-			place_single_face_down_card(spot)
+func match_failed():
+	if attempts == 1:   #if they fail on last attempt
+		play_game_over() #game over
+		attempts -= 1
+	if attempts > 1:   #if not on last attempt
+		play_gong()   # play gong
 		
-		revealed_spots.clear()
-	else:
-		play_gong()
-		Attempts -= 1
-		update_text_to_red()
-		await get_tree().create_timer(1.5).timeout
-		remove_red_text()
-		update_text()
-		for spot in revealed_spots:
-			place_single_face_down_card(spot)
-		
-		revealed_spots.clear()
+	attempts -= 1        #minus attempts and delay so they can process it
+	update_text_to_red()
+	await get_tree().create_timer(1.5).timeout
+	remove_red_text()
+	update_text()
+	for spot in revealedSpots:
+		place_hidden_block(spot)
+	
+	revealedSpots.clear()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
