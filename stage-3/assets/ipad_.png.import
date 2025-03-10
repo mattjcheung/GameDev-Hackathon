@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0374lp52iy6h"
-path="res://.godot/imported/ipad crack.png-9f0e71e8bf99b763baa1d5c457eb3771.ctex"
+uid="uid://bqg4vdx56ebq8"
+path="res://.godot/imported/ipad_.png-704076e09c2dc4220b7082e3decfe18f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ipad crack.png"
-dest_files=["res://.godot/imported/ipad crack.png-9f0e71e8bf99b763baa1d5c457eb3771.ctex"]
+source_file="res://assets/ipad_.png"
+dest_files=["res://.godot/imported/ipad_.png-704076e09c2dc4220b7082e3decfe18f.ctex"]
 
 [params]
 

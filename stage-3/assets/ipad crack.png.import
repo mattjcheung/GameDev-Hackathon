@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bljoqmjx4tjxt"
-path="res://.godot/imported/vector_style5 copy2.png-0e3d832066fff80450823cd1c4894ff5.ctex"
+uid="uid://d0374lp52iy6h"
+path="res://.godot/imported/ipad crack.png-0f03546c9ecb0602a3281d44f75349cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vector_style5 copy2.png"
-dest_files=["res://.godot/imported/vector_style5 copy2.png-0e3d832066fff80450823cd1c4894ff5.ctex"]
+source_file="res://assets/ipad crack.png"
+dest_files=["res://.godot/imported/ipad crack.png-0f03546c9ecb0602a3281d44f75349cd.ctex"]
 
 [params]
 
