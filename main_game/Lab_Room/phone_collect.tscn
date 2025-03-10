@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ohcfqkc232o6"]
+
+[ext_resource type="Script" path="res://Lab_Room/phone_collect.gd" id="1_sh7oi"]
+[ext_resource type="Texture2D" uid="uid://dpqlvx2hh4ktf" path="res://Lab_Room/assets/phone_off.png" id="2_rxxom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8imui"]
+size = Vector2(50, 83)
+
+[node name="phone_collect" type="Area2D"]
+script = ExtResource("1_sh7oi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rxxom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 8.5)
+shape = SubResource("RectangleShape2D_8imui")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://qq6e561msbos"]
+
+[ext_resource type="Script" path="res://Lab_Room/Lab_post_game.gd" id="1_ac4j4"]
+[ext_resource type="PackedScene" uid="uid://be2ilbacpejo3" path="res://Lab_Room/Lab.tscn" id="2_intid"]
+[ext_resource type="PackedScene" uid="uid://bajir8gidmg11" path="res://Lab_Room/monkey.tscn" id="3_dvn2d"]
+[ext_resource type="PackedScene" uid="uid://d00o0xpgxm5u" path="res://Lab_Room/beacon.tscn" id="4_7d3ss"]
+[ext_resource type="PackedScene" uid="uid://cu7w4q6q4ynh7" path="res://Lab_Room/access_panel.tscn" id="5_uc2an"]
+[ext_resource type="PackedScene" uid="uid://nhtmbhg6eyno" path="res://Lab_Room/door.tscn" id="6_swa5u"]
+[ext_resource type="PackedScene" uid="uid://8vll2l0ixeni" path="res://Lab_Room/table.tscn" id="7_nkuen"]
+[ext_resource type="PackedScene" uid="uid://cbt3ka5e62wdm" path="res://Lab_Room/weapon_part.tscn" id="8_dqgfc"]
+[ext_resource type="PackedScene" uid="uid://cx70wwnw3nvsj" path="res://Lab_Room/page.tscn" id="9_8bl86"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ste5r"]
+size = Vector2(30.7115, 76.7874)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ac4j4")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_intid")]
+
+[node name="monkey" parent="." instance=ExtResource("3_dvn2d")]
+z_index = 1
+position = Vector2(-127, -102)
+
+[node name="Beacon" parent="." instance=ExtResource("4_7d3ss")]
+position = Vector2(405, 204)
+
+[node name="AccessPanel" parent="." instance=ExtResource("5_uc2an")]
+position = Vector2(-125, 10)
+scale = Vector2(1.03887, 1.08767)
+
+[node name="Door" parent="." instance=ExtResource("6_swa5u")]
+position = Vector2(492, 174)
+scale = Vector2(0.68, 0.640001)
+
+[node name="table" parent="." instance=ExtResource("7_nkuen")]
+position = Vector2(291, 427)
+scale = Vector2(0.720002, 0.679999)
+
+[node name="weapon_part" parent="." instance=ExtResource("8_dqgfc")]
+position = Vector2(693, 340)
+rotation = 1.5708
+scale = Vector2(1.64159, 2.18786)
+
+[node name="exit" type="Area2D" parent="."]
+position = Vector2(693, 340)
+rotation = 1.5708
+scale = Vector2(1.64159, 2.18786)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="exit"]
+position = Vector2(-124.396, 93.2419)
+shape = SubResource("RectangleShape2D_ste5r")
+
+[node name="Page" parent="." instance=ExtResource("9_8bl86")]
+position = Vector2(-127, -102)
+
+[connection signal="access" from="AccessPanel" to="." method="_on_access_panel_access"]
+[connection signal="read" from="table" to="." method="_on_table_read"]
+[connection signal="weapon1" from="weapon_part" to="." method="_on_weapon_part_weapon_1"]
+[connection signal="body_entered" from="exit" to="." method="_on_exit_body_entered"]

@@ -64,7 +64,7 @@ texture = ExtResource("7_sb8gc")
 [node name="End" type="CanvasLayer" parent="."]
 script = ExtResource("9_e1qj2")
 
-[node name="Button" type="Button" parent="End"]
+[node name="return_button" type="Button" parent="End"]
 offset_left = 267.0
 offset_top = 100.0
 offset_right = 749.0
@@ -82,4 +82,4 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_yo2b6")
 [connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
 [connection signal="restart" from="Fail" to="." method="_on_fail_restart"]
 [connection signal="return_lab" from="End" to="." method="_on_end_return_lab"]
-[connection signal="pressed" from="End/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="End/return_button" to="." method="_on_button_pressed"]

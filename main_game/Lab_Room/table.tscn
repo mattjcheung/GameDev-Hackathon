@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://8vll2l0ixeni"]
+
+[ext_resource type="Script" path="res://Lab_Room/table.gd" id="1_fyuar"]
+[ext_resource type="Texture2D" uid="uid://gwxm83gqexj5" path="res://Lab_Room/assets/table.png" id="1_g2aqd"]
+[ext_resource type="Script" path="res://Lab_Room/book_field.gd" id="2_vdamo"]
+[ext_resource type="Texture2D" uid="uid://cc3unwpo1pqxc" path="res://Lab_Room/assets/book.png" id="3_et3yi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urasy"]
+size = Vector2(57, 113)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnck7"]
+size = Vector2(84, 66.5)
+
+[node name="table" type="StaticBody2D"]
+script = ExtResource("1_fyuar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -11.5)
+shape = SubResource("RectangleShape2D_urasy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g2aqd")
+
+[node name="book_field" type="Area2D" parent="."]
+script = ExtResource("2_vdamo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="book_field"]
+position = Vector2(12, 34.75)
+shape = SubResource("RectangleShape2D_lnck7")
+
+[node name="Sprite2D" type="Sprite2D" parent="book_field"]
+position = Vector2(7.62939e-06, 12)
+rotation = 4.71239
+scale = Vector2(0.1875, 0.134361)
+texture = ExtResource("3_et3yi")
+
+[connection signal="body_entered" from="book_field" to="book_field" method="_on_body_entered"]
+[connection signal="page" from="book_field" to="." method="_on_book_field_page"]

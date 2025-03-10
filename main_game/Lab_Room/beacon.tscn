@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d00o0xpgxm5u"]
+
+[ext_resource type="Script" path="res://Lab_Room/beacon.gd" id="1_hluk5"]
+[ext_resource type="Texture2D" uid="uid://cowts1y1ul4v6" path="res://Lab_Room/assets/beacon-off.png" id="2_kx8vj"]
+[ext_resource type="Texture2D" uid="uid://ejvrn04wuisu" path="res://Lab_Room/assets/beacon-on.png" id="3_7ab26"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ogvaa"]
+radius = 6.0
+height = 31.7073
+
+[node name="Beacon" type="StaticBody2D"]
+position = Vector2(488, 267)
+scale = Vector2(2.44444, 1.64)
+script = ExtResource("1_hluk5")
+
+[node name="Off" type="Sprite2D" parent="."]
+texture = ExtResource("2_kx8vj")
+
+[node name="On" type="Sprite2D" parent="."]
+texture = ExtResource("3_7ab26")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9.14634)
+shape = SubResource("CapsuleShape2D_ogvaa")

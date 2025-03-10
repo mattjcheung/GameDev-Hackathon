@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://be2ilbacpejo3"]
+
+[ext_resource type="Texture2D" uid="uid://brar0qabocjsw" path="res://Lab_Room/assets/Lab room.png" id="1_kahmu"]
+[ext_resource type="Texture2D" uid="uid://bps1u5cec2dq7" path="res://Lab_Room/assets/door-above.png" id="2_uyabf"]
+[ext_resource type="Texture2D" uid="uid://cf0x2s3p75evq" path="res://Drone_Level/assets/black.png" id="3_gupur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o53o1"]
+size = Vector2(188, 51.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tm78"]
+size = Vector2(193.25, 55.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ae10n"]
+size = Vector2(17, 466)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyepj"]
+size = Vector2(502, 20)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(492, 379)
+texture = ExtResource("1_kahmu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-1.75737, 212)
+rotation = 1.5708
+scale = Vector2(1, 0.676751)
+texture = ExtResource("2_uyabf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
+z_index = -2
+position = Vector2(-20, 16)
+scale = Vector2(5.34222, 3.94889)
+texture = ExtResource("3_gupur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(340, 172.25)
+shape = SubResource("RectangleShape2D_o53o1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(644.375, 173.75)
+shape = SubResource("RectangleShape2D_1tm78")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(252.5, 376)
+shape = SubResource("RectangleShape2D_ae10n")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(731, 379)
+shape = SubResource("RectangleShape2D_ae10n")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(490, 602)
+shape = SubResource("RectangleShape2D_jyepj")
