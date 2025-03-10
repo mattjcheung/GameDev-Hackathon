@@ -3,16 +3,17 @@ extends Node
 signal minigame
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$Beacon.activate()
+	$Door.open()
 
 
-func _on_access_panel_access() -> void:
-	get_tree().change_scene_to_file("res://Lab_Room/Lab_post_game_2.tscn")
-	
 
-
+func _on_exit_body_entered(body: Node2D) -> void:
+	if body.name == "monkey":
+		get_tree().change_scene_to_file("res://Title_Screen/Menu.tscn")
+		
 func _on_weapon_part_weapon_1() -> void:
-	$monkey.thought_2()
+	$monkey.thought_3()
 
 
 func _on_table_read() -> void:

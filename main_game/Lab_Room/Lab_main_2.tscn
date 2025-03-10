@@ -40,6 +40,7 @@ rotation = 1.5708
 scale = Vector2(1.64, 1.68)
 
 [node name="Page" parent="." instance=ExtResource("9_ruw62")]
+position = Vector2(859, 146)
 
 [connection signal="access" from="AccessPanel" to="." method="_on_access_panel_access"]
 [connection signal="read" from="table" to="." method="_on_table_read"]

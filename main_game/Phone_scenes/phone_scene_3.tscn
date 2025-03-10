@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Phone_scenes/phone_scene_3.gd" id="1_6b21w"]
 [ext_resource type="Texture2D" uid="uid://c1j1yfn0dvbnf" path="res://Phone_scenes/assets/phone_off1.png" id="2_ye6qg"]
 [ext_resource type="Texture2D" uid="uid://luf3el4hvo1d" path="res://Phone_scenes/assets/spriteSheet_lightingBulb02_204x219.png" id="3_7o1dc"]
-[ext_resource type="Texture2D" uid="uid://daihao3htnpes" path="res://Phone_scenes/assets/phone dialogue_5.png" id="4_h7424"]
+[ext_resource type="Texture2D" uid="uid://d2jaut40p7yho" path="res://Phone_scenes/assets/phone dialogue_6.png" id="4_cmqxd"]
 [ext_resource type="Texture2D" uid="uid://cf0x2s3p75evq" path="res://Drone_Level/assets/black.png" id="5_7dogh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p27n7"]
@@ -283,7 +283,7 @@ frame_progress = 0.729451
 [node name="dialogue" type="Sprite2D" parent="."]
 position = Vector2(482, 607)
 scale = Vector2(3.02724, 2.66688)
-texture = ExtResource("4_h7424")
+texture = ExtResource("4_cmqxd")
 
 [node name="backing" type="Sprite2D" parent="."]
 z_index = -1
