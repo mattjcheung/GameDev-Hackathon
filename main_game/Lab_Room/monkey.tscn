@@ -28,7 +28,7 @@ position = Vector2(569, 373)
 texture = ExtResource("3_7l3xb")
 
 [node name="thoughtTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 5.0
 
 [node name="weapon2_thought" type="Sprite2D" parent="."]
 position = Vector2(571, 371)

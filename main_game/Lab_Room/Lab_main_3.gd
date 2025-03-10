@@ -13,6 +13,7 @@ func _on_access_panel_access() -> void:
 
 func _on_weapon_part_weapon_1() -> void:
 	$monkey.thought_3()
+	$Gun.piece_3()
 
 
 func _on_table_read() -> void:

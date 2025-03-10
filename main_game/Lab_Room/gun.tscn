@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2brr7ypk1g7t"]
+
+[ext_resource type="Script" path="res://gun.gd" id="1_buwvv"]
+[ext_resource type="Texture2D" uid="uid://cyoppyt7tpubx" path="res://Lab_Room/assets/GunSprite.png" id="2_qyml1"]
+[ext_resource type="Texture2D" uid="uid://l300q76lq3py" path="res://Lab_Room/assets/GunSprite_1.png" id="3_nwi0t"]
+[ext_resource type="Texture2D" uid="uid://cdr37qqwcgkcu" path="res://Lab_Room/assets/GunSprite_2.png" id="4_ex41a"]
+[ext_resource type="Texture2D" uid="uid://d0f3n1lbrlq7k" path="res://Lab_Room/assets/GunSprite_3.png" id="5_7l7du"]
+[ext_resource type="Texture2D" uid="uid://c7qeoo5wb1ver" path="res://Lab_Room/assets/yellow back.png" id="6_lafkd"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_buwvv")
+
+[node name="gun" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(494.5, 87.5)
+texture = ExtResource("2_qyml1")
+
+[node name="gun1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(475, 89)
+texture = ExtResource("3_nwi0t")
+
+[node name="gun2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(489.5, 88.5)
+texture = ExtResource("4_ex41a")
+
+[node name="gun3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(506, 88)
+texture = ExtResource("5_7l7du")
+
+[node name="ShowTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="back" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(500, 96)
+texture = ExtResource("6_lafkd")
+
+[connection signal="timeout" from="ShowTimer" to="." method="_on_show_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qq6e561msbos"]
+[gd_scene load_steps=14 format=3 uid="uid://qq6e561msbos"]
 
 [ext_resource type="Script" path="res://Lab_Room/Lab_post_game.gd" id="1_ac4j4"]
 [ext_resource type="PackedScene" uid="uid://be2ilbacpejo3" path="res://Lab_Room/Lab.tscn" id="2_intid"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cx70wwnw3nvsj" path="res://Lab_Room/page.tscn" id="9_8bl86"]
 [ext_resource type="Texture2D" uid="uid://3g42i68pwfqc" path="res://Lab_Room/assets/note_1.png" id="10_2d8vo"]
 [ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://menu_button.tscn" id="10_sd2q2"]
+[ext_resource type="PackedScene" uid="uid://b2brr7ypk1g7t" path="res://Lab_Room/gun.tscn" id="12_oq23f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ste5r"]
 size = Vector2(30.7115, 76.7874)
@@ -67,6 +68,8 @@ text = "Press Enter To Close
 "
 
 [node name="Menu button" parent="." instance=ExtResource("10_sd2q2")]
+
+[node name="Gun" parent="." instance=ExtResource("12_oq23f")]
 
 [connection signal="access" from="AccessPanel" to="." method="_on_access_panel_access"]
 [connection signal="read" from="table" to="." method="_on_table_read"]

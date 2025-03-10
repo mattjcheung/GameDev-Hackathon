@@ -14,6 +14,7 @@ func _on_exit_body_entered(body: Node2D) -> void:
 		
 func _on_weapon_part_weapon_1() -> void:
 	$monkey.thought_2()
+	$Gun.piece_2()
 
 
 func _on_table_read() -> void:
