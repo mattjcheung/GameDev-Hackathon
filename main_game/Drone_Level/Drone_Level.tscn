@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cx6ifydwwsmyi"]
+[gd_scene load_steps=15 format=3 uid="uid://cx6ifydwwsmyi"]
 
 [ext_resource type="Script" path="res://Drone_Level/Drone_Level.gd" id="1_qw2c5"]
 [ext_resource type="PackedScene" uid="uid://pm6rk62u4nqq" path="res://Drone_Level/circuitry.tscn" id="2_clcgx"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cfgxjlguu1o4x" path="res://Drone_Level/button.tscn" id="6_m7c4u"]
 [ext_resource type="Texture2D" uid="uid://c4rcc57fee576" path="res://Buttons/click to play_button.png" id="7_sb8gc"]
 [ext_resource type="Texture2D" uid="uid://dfxgy68rbkf4l" path="res://Buttons/Return_lab_button.png" id="8_rsm0s"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://menu_button.tscn" id="9_58sb5"]
 [ext_resource type="Script" path="res://Drone_Level/end.gd" id="9_e1qj2"]
 [ext_resource type="PackedScene" uid="uid://cvmw0xegtigt3" path="res://Drone_Level/fail.tscn" id="9_haaq7"]
 
@@ -25,7 +26,7 @@ script = ExtResource("1_qw2c5")
 circuit_scene = ExtResource("2_clcgx")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(97.9999, -107)
+position = Vector2(94, -110)
 scale = Vector2(0.944549, 1.27473)
 texture = ExtResource("3_ylw05")
 offset = Vector2(432, 384)
@@ -53,22 +54,24 @@ position = Vector2(680, 400)
 
 [node name="Title" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(514, 332)
-scale = Vector2(3.89511, 4.07907)
+position = Vector2(489, 355)
+scale = Vector2(3.19447, 3.83499)
 texture = ExtResource("7_sb8gc")
 
 [node name="EndTimer" type="Timer" parent="."]
 
 [node name="Fail" parent="." instance=ExtResource("9_haaq7")]
 
+[node name="Menu button" parent="Fail" instance=ExtResource("9_58sb5")]
+
 [node name="End" type="CanvasLayer" parent="."]
 script = ExtResource("9_e1qj2")
 
 [node name="return_button" type="Button" parent="End"]
-offset_left = 267.0
-offset_top = 100.0
-offset_right = 749.0
-offset_bottom = 572.0
+offset_left = 359.0
+offset_top = 268.0
+offset_right = 613.0
+offset_bottom = 437.0
 theme_override_styles/hover = SubResource("StyleBoxTexture_xgj27")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_u2ocb")
 theme_override_styles/normal = SubResource("StyleBoxTexture_yo2b6")

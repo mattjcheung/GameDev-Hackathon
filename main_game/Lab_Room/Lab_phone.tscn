@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dblebw8qog0gv"]
+[gd_scene load_steps=12 format=3 uid="uid://dblebw8qog0gv"]
 
 [ext_resource type="Script" path="res://Lab_Room/Lab_main.gd" id="1_gwovx"]
 [ext_resource type="PackedScene" uid="uid://be2ilbacpejo3" path="res://Lab_Room/Lab.tscn" id="2_2eys2"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://8vll2l0ixeni" path="res://Lab_Room/table.tscn" id="7_5ps7r"]
 [ext_resource type="PackedScene" uid="uid://ohcfqkc232o6" path="res://Lab_Room/phone_collect.tscn" id="8_6pdhg"]
 [ext_resource type="PackedScene" uid="uid://cbt3ka5e62wdm" path="res://Lab_Room/weapon_part.tscn" id="9_wcl3m"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://menu_button.tscn" id="10_qdltj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fl48w"]
 size = Vector2(17.5, 76)
@@ -55,5 +56,7 @@ shape = SubResource("RectangleShape2D_fl48w")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
 position = Vector2(529, 556)
 shape = SubResource("RectangleShape2D_fl48w")
+
+[node name="Menu button" parent="." instance=ExtResource("10_qdltj")]
 
 [connection signal="access" from="AccessPanel" to="." method="_on_access_panel_access"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://qq6e561msbos"]
+[gd_scene load_steps=13 format=3 uid="uid://qq6e561msbos"]
 
 [ext_resource type="Script" path="res://Lab_Room/Lab_post_game.gd" id="1_ac4j4"]
 [ext_resource type="PackedScene" uid="uid://be2ilbacpejo3" path="res://Lab_Room/Lab.tscn" id="2_intid"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://8vll2l0ixeni" path="res://Lab_Room/table.tscn" id="7_nkuen"]
 [ext_resource type="PackedScene" uid="uid://cbt3ka5e62wdm" path="res://Lab_Room/weapon_part.tscn" id="8_dqgfc"]
 [ext_resource type="PackedScene" uid="uid://cx70wwnw3nvsj" path="res://Lab_Room/page.tscn" id="9_8bl86"]
+[ext_resource type="Texture2D" uid="uid://3g42i68pwfqc" path="res://Lab_Room/assets/note_1.png" id="10_2d8vo"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://menu_button.tscn" id="10_sd2q2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ste5r"]
 size = Vector2(30.7115, 76.7874)
@@ -52,7 +54,19 @@ position = Vector2(-124.396, 93.2419)
 shape = SubResource("RectangleShape2D_ste5r")
 
 [node name="Page" parent="." instance=ExtResource("9_8bl86")]
-position = Vector2(-127, -102)
+visible = false
+position = Vector2(482, 393)
+texture = ExtResource("10_2d8vo")
+
+[node name="Label" type="Label" parent="Page"]
+offset_left = -68.0
+offset_top = 222.0
+offset_right = 88.0
+offset_bottom = 245.0
+text = "Press Enter To Close
+"
+
+[node name="Menu button" parent="." instance=ExtResource("10_sd2q2")]
 
 [connection signal="access" from="AccessPanel" to="." method="_on_access_panel_access"]
 [connection signal="read" from="table" to="." method="_on_table_read"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bd5ggwao22lha"]
+[gd_scene load_steps=15 format=3 uid="uid://bd5ggwao22lha"]
 
 [ext_resource type="Script" path="res://Title_Screen/menu.gd" id="1_1iwca"]
 [ext_resource type="Texture2D" uid="uid://c1cm60cvral42" path="res://Buttons/start_button.png" id="2_shfcn"]
+[ext_resource type="Texture2D" uid="uid://cf0x2s3p75evq" path="res://Drone_Level/assets/black.png" id="2_wpwt4"]
 [ext_resource type="Texture2D" uid="uid://be7jd70h60b07" path="res://Buttons/level_select_button.png" id="3_ckfx1"]
 [ext_resource type="Texture2D" uid="uid://cmquedfuddoqm" path="res://Buttons/exit_button.png" id="4_gbttw"]
 
@@ -36,14 +37,17 @@ texture = ExtResource("4_gbttw")
 script = ExtResource("1_1iwca")
 
 [node name="Background" type="Sprite2D" parent="."]
+position = Vector2(496, 378.375)
+scale = Vector2(4.45111, 3.32778)
+texture = ExtResource("2_wpwt4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Play" type="Button" parent="CanvasLayer"]
-offset_left = 417.0
-offset_top = 55.0
-offset_right = 558.0
-offset_bottom = 135.0
+offset_left = 415.0
+offset_top = 268.0
+offset_right = 556.0
+offset_bottom = 348.0
 theme_override_styles/hover = SubResource("StyleBoxTexture_a848a")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_sfai5")
 theme_override_styles/normal = SubResource("StyleBoxTexture_lnkre")
@@ -51,10 +55,10 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_lnkre")
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Levels" type="Button" parent="CanvasLayer2"]
-offset_left = 417.0
-offset_top = 144.0
-offset_right = 561.0
-offset_bottom = 227.0
+offset_left = 415.0
+offset_top = 357.0
+offset_right = 559.0
+offset_bottom = 440.0
 theme_override_styles/hover = SubResource("StyleBoxTexture_vsr71")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_ig2oh")
 theme_override_styles/normal = SubResource("StyleBoxTexture_dhcj0")
@@ -62,13 +66,14 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_dhcj0")
 [node name="CanvasLayer3" type="CanvasLayer" parent="."]
 
 [node name="Exit" type="Button" parent="CanvasLayer3"]
-offset_left = 416.0
-offset_top = 238.0
-offset_right = 561.0
-offset_bottom = 320.0
+offset_left = 414.0
+offset_top = 451.0
+offset_right = 559.0
+offset_bottom = 533.0
 theme_override_styles/hover = SubResource("StyleBoxTexture_kitfo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_xu8lg")
 theme_override_styles/normal = SubResource("StyleBoxTexture_nxmpb")
 
 [connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Levels" to="." method="_on_levels_pressed"]
 [connection signal="pressed" from="CanvasLayer3/Exit" to="." method="_on_exit_pressed"]
