@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://pjnvjwu2yhsf"]
+
+[ext_resource type="Script" uid="uid://cyiwi0y83npe3" path="res://TheBossFight/scripts/cutscene.gd" id="1_a320b"]
+[ext_resource type="PackedScene" uid="uid://bhbaif6uihe54" path="res://TheBossFight/scenes/Player.tscn" id="2_0sipp"]
+
+[sub_resource type="Animation" id="Animation_fs8wb"]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(449, 375)]
+}
+
+[sub_resource type="Animation" id="Animation_2bm7f"]
+resource_name = "new_animation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(449, 375), Vector2(547, 375)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bb0yx"]
+_data = {
+&"RESET": SubResource("Animation_fs8wb"),
+&"new_animation": SubResource("Animation_2bm7f")
+}
+
+[node name="Cutscene" type="Node2D"]
+script = ExtResource("1_a320b")
+
+[node name="Player" parent="." instance=ExtResource("2_0sipp")]
+position = Vector2(449, 375)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_bb0yx")
+}

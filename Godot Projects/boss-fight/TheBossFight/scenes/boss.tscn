@@ -1,0 +1,179 @@
+[gd_scene load_steps=19 format=3 uid="uid://b7patroyavulb"]
+
+[ext_resource type="Script" uid="uid://d4i7ay1bvod6o" path="res://TheBossFight/scripts/boss.gd" id="1_jncid"]
+[ext_resource type="Texture2D" uid="uid://dfhowb60fvgqf" path="res://TheBossFight/assets/spritesheets/BossSpriteSheet.png" id="2_qnbj4"]
+[ext_resource type="PackedScene" uid="uid://yymqxp3eyg7s" path="res://TheBossFight/scenes/health_bar.tscn" id="3_r3bxh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqpjq"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(0, 0, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cdgk"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(1200, 0, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsl3t"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(2400, 0, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2avx2"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(3600, 0, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f346"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(4800, 0, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0onds"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(0, 1200, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfs1x"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(1200, 1200, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eiau"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(2400, 1200, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn2fc"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(3600, 1200, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqd3i"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(4800, 1200, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mautr"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(0, 2400, 1200, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho3mf"]
+atlas = ExtResource("2_qnbj4")
+region = Rect2(1200, 2400, 1200, 600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7apjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqpjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cdgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsl3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2avx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f346")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0onds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfs1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eiau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn2fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqd3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mautr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ho3mf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qh5fr"]
+radius = 56.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dlq0"]
+radius = 104.0
+
+[node name="Boss" type="CharacterBody2D" groups=["boss", "enemies"]]
+z_index = 4
+collision_mask = 2
+script = ExtResource("1_jncid")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7apjh")
+autoplay = "default"
+frame_progress = 0.548941
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-112, -40)
+shape = SubResource("CircleShape2D_qh5fr")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(112, -40)
+shape = SubResource("CircleShape2D_qh5fr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_4dlq0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 776.0
+offset_top = 680.0
+offset_right = 935.0
+offset_bottom = 729.0
+scale = Vector2(0.8, 0.8)
+text = "THE NULL MANIFEST
+"
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("3_r3bxh")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = -50.0
+offset_right = -20.0
+offset_bottom = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+show_percentage = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="MoveTimer" type="Timer" parent="Timers"]
+wait_time = 8.382
+
+[node name="DashTimer" type="Timer" parent="Timers"]
+
+[node name="ReturnTimer" type="Timer" parent="Timers"]
+
+[node name="AttackTimer" type="Timer" parent="Timers"]
+
+[node name="Markers" type="Node" parent="."]
+
+[node name="MARKER1" type="Marker2D" parent="Markers"]
+position = Vector2(424, 200)
+
+[node name="MARKER2" type="Marker2D" parent="Markers"]
+position = Vector2(288, 128)
+
+[node name="MARKER3" type="Marker2D" parent="Markers"]
+position = Vector2(-424, 184)
+
+[node name="MARKER4" type="Marker2D" parent="Markers"]
+position = Vector2(-424, 184)
