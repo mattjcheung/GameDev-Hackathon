@@ -287,8 +287,8 @@ texture = ExtResource("4_81gbk")
 
 [node name="backing" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(495, 371)
-scale = Vector2(4.42222, 3.38667)
+position = Vector2(498.75, 371)
+scale = Vector2(4.45555, 3.38667)
 texture = ExtResource("5_n1siv")
 
 [node name="Label" type="Label" parent="backing"]

@@ -1,0 +1,155 @@
+[gd_scene load_steps=19 format=3 uid="uid://dkxmuiqhwr3y"]
+
+[ext_resource type="Script" uid="uid://cu6jq8dx86chi" path="res://TheBossFight/scripts/drone.gd" id="1_1r4ts"]
+[ext_resource type="Texture2D" uid="uid://m32r54mesjbv" path="res://TheBossFight/assets/spritesheets/Untitled_Artwork-ezgif.com-gif-to-sprite-converter.png" id="1_knnud"]
+[ext_resource type="PackedScene" uid="uid://fb0conjv28g4" path="res://TheBossFight/scenes/killzone.tscn" id="2_1r4ts"]
+[ext_resource type="PackedScene" uid="uid://yymqxp3eyg7s" path="res://TheBossFight/scenes/health_bar.tscn" id="4_umx5g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umx5g"]
+atlas = ExtResource("1_knnud")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1p8w"]
+atlas = ExtResource("1_knnud")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6asb"]
+atlas = ExtResource("1_knnud")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxcwj"]
+atlas = ExtResource("1_knnud")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4gt0"]
+atlas = ExtResource("1_knnud")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_746d6"]
+atlas = ExtResource("1_knnud")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p7cs"]
+atlas = ExtResource("1_knnud")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxsdg"]
+atlas = ExtResource("1_knnud")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v1da"]
+atlas = ExtResource("1_knnud")
+region = Rect2(300, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jc1q"]
+atlas = ExtResource("1_knnud")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om5ig"]
+atlas = ExtResource("1_knnud")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmcdn"]
+atlas = ExtResource("1_knnud")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vy1p0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umx5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1p8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6asb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxcwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4gt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_746d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p7cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxsdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v1da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jc1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om5ig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmcdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umx5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1p8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6asb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umx5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1p8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6asb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vcygd"]
+radius = 8.86087
+height = 41.9938
+
+[node name="Drone" type="StaticBody2D" groups=["enemies"]]
+script = ExtResource("1_1r4ts")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vy1p0")
+autoplay = "default"
+frame_progress = 0.798027
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-4.76837e-07, 11)
+rotation = 1.58802
+shape = SubResource("CapsuleShape2D_vcygd")
+
+[node name="Killzone" parent="." instance=ExtResource("2_1r4ts")]
+position = Vector2(0, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-4.76837e-07, 2)
+rotation = 1.58802
+shape = SubResource("CapsuleShape2D_vcygd")
+
+[node name="rayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 11)
+target_position = Vector2(-38, -1)
+
+[node name="rayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 11)
+target_position = Vector2(32, 0)
+
+[node name="HealthBar" parent="." groups=["enemies"] instance=ExtResource("4_umx5g")]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 19.0
+offset_bottom = -20.0

@@ -37,8 +37,6 @@ func new_game():
 	get_tree().call_group("circuits", "queue_free")
 	circuits.clear()
 	$Button.start()
-	$Button.position.x = 680
-	$Button.position.y= 400
 	time_elapsed = false
 	
 	
@@ -116,6 +114,9 @@ func _on_circuit_timer_timeout() -> void:
 
 func _on_game_timer_timeout() -> void:
 	time_elapsed = true
+	$ButtonTimer.start()
+	
+func _on_button_timer_timeout() -> void:
 	button_visible = true
 	$Button.appear()
 	

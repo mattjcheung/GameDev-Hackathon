@@ -43,14 +43,14 @@ priority = 1
 wait_time = 1.5
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 15.0
 
 [node name="ButtonTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 
 [node name="Button" parent="." instance=ExtResource("6_m7c4u")]
 z_index = 1
-position = Vector2(680, 400)
+position = Vector2(658, 403)
 
 [node name="Title" type="Sprite2D" parent="."]
 z_index = 1

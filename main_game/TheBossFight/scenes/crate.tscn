@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ra2w4ccqwywt"]
+
+[ext_resource type="Script" uid="uid://b1ap3q5ix44t3" path="res://TheBossFight/scripts/crate.gd" id="1_dwt0d"]
+[ext_resource type="Texture2D" uid="uid://b1hthb7lur6sw" path="res://TheBossFight/assets/Industrial Assets - Plus Pack/3. Industrial Assets - Plus Pack 32p/IndutrialTileset_Assets1_plus_v1.1_transparent.png" id="2_kn6iu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74u5o"]
+size = Vector2(64, 32)
+
+[node name="Crate" type="RigidBody2D"]
+script = ExtResource("1_dwt0d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kn6iu")
+region_enabled = true
+region_rect = Rect2(538, 158, 96, 55)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -2)
+shape = SubResource("RectangleShape2D_74u5o")

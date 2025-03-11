@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5iyr261g8qxg"]
+
+[ext_resource type="Texture2D" uid="uid://dy22je81vkr3j" path="res://TheBossFight/assets/Industrial Assets - Plus Pack/3. Industrial Assets - Plus Pack 32p/IndutrialTileset_Assets1_plus_v1.0_transparent.png" id="1_085vu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x4gk"]
+size = Vector2(55, 0)
+
+[node name="Grey Platform" type="AnimatableBody2D"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -4)
+texture = ExtResource("1_085vu")
+region_enabled = true
+region_rect = Rect2(139, 673, 118, 53)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_3x4gk")
+one_way_collision = true

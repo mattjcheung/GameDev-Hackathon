@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _on_exit_body_entered(body: Node2D) -> void:
 	if body.name == "monkey":
-		get_tree().change_scene_to_file("res://Title_Screen/Menu.tscn")
+		get_tree().change_scene_to_file("res://TheBossFight/scenes/boss_battle_main.tscn")
 		
 func _on_weapon_part_weapon_1() -> void:
 	$monkey.thought_3()

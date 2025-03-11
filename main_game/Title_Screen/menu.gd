@@ -3,6 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$VideoStreamPlayer.play()
 	pass # Replace with function body.
 
 
@@ -13,7 +14,7 @@ func _process(delta: float) -> void:
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://Lab_Room/Lab_phone.tscn")
+	get_tree().change_scene_to_file("res://start_scene/scenes/world.tscn")
 
 
 func _on_exit_pressed() -> void:

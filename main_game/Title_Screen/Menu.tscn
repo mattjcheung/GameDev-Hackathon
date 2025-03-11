@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bd5ggwao22lha"]
+[gd_scene load_steps=17 format=3 uid="uid://bd5ggwao22lha"]
 
-[ext_resource type="Script" path="res://Title_Screen/menu.gd" id="1_1iwca"]
+[ext_resource type="Script" uid="uid://clunibs20n8j2" path="res://Title_Screen/menu.gd" id="1_1iwca"]
+[ext_resource type="VideoStream" path="res://Title_Screen/background.ogv" id="2_elnvv"]
 [ext_resource type="Texture2D" uid="uid://c1cm60cvral42" path="res://Buttons/start_button.png" id="2_shfcn"]
 [ext_resource type="Texture2D" uid="uid://cf0x2s3p75evq" path="res://Drone_Level/assets/black.png" id="2_wpwt4"]
 [ext_resource type="Texture2D" uid="uid://be7jd70h60b07" path="res://Buttons/level_select_button.png" id="3_ckfx1"]
@@ -37,7 +38,22 @@ texture = ExtResource("4_gbttw")
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_1iwca")
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+z_index = -1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = -54.0
+offset_right = 1064.0
+offset_bottom = 766.0
+grow_horizontal = 2
+scale = Vector2(1.94, 1.94)
+stream = ExtResource("2_elnvv")
+loop = true
+
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(494.5, 378)
 scale = Vector2(4.88444, 3.47445)
 texture = ExtResource("2_wpwt4")

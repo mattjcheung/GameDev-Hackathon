@@ -23,7 +23,7 @@ z_index = 1
 position = Vector2(12, 198)
 
 [node name="Beacon" parent="." instance=ExtResource("4_qcu6u")]
-position = Vector2(384, 229)
+position = Vector2(385, 222)
 
 [node name="AccessPanel" parent="." instance=ExtResource("5_r50oi")]
 position = Vector2(-125, 10)

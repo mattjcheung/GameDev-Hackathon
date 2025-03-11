@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://buoat3p646462"]
+
+[ext_resource type="Texture2D" uid="uid://dmpqdg6u5bqlf" path="res://TheBossFight/assets/Industrial Assets - Plus Pack/4. Industrial Assets - Plus Pack 16p/Collectable2Wrench/Wrench_16p_v1.0_spritesheet.png" id="1_6lcl6"]
+[ext_resource type="Script" uid="uid://bfw2tfs3711xg" path="res://TheBossFight/scripts/wrench.gd" id="1_dr0k1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr0k1"]
+atlas = ExtResource("1_6lcl6")
+region = Rect2(0, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dcrx"]
+atlas = ExtResource("1_6lcl6")
+region = Rect2(8, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojg3f"]
+atlas = ExtResource("1_6lcl6")
+region = Rect2(16, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy0vm"]
+atlas = ExtResource("1_6lcl6")
+region = Rect2(24, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsr8h"]
+atlas = ExtResource("1_6lcl6")
+region = Rect2(32, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faehq"]
+atlas = ExtResource("1_6lcl6")
+region = Rect2(40, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55ifj"]
+atlas = ExtResource("1_6lcl6")
+region = Rect2(48, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h076"]
+atlas = ExtResource("1_6lcl6")
+region = Rect2(56, 32, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5gd2g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr0k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dcrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojg3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jy0vm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsr8h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_faehq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55ifj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6h076")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c64jj"]
+radius = 7.0
+
+[node name="Wrench" type="Area2D" groups=["wrench"]]
+collision_mask = 2
+script = ExtResource("1_dr0k1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5gd2g")
+autoplay = "default"
+frame_progress = 0.155519
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c64jj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
