@@ -22,6 +22,7 @@ InteractionManager="*res://TheBossFight/Interaction/InteractionManager.tscn"
 
 window/size/viewport_width=1000
 window/size/viewport_height=750
+window/stretch/mode="viewport"
 
 [input]
 

@@ -1,11 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6sgfxdtw6l3l"]
+[gd_scene load_steps=16 format=3 uid="uid://c6sgfxdtw6l3l"]
 
 [ext_resource type="PackedScene" uid="uid://kudwjf11wjh7" path="res://stage-3/tile_map.tscn" id="1_sotei"]
 [ext_resource type="Texture2D" uid="uid://d0374lp52iy6h" path="res://stage-3/assets/ipad crack.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bqg4vdx56ebq8" path="res://stage-3/assets/ipad_.png" id="3_1bvp3"]
 [ext_resource type="AudioStream" uid="uid://5qhi2h6hv37q" path="res://stage-3/assets/gong.mp3" id="4_1bvp3"]
-[ext_resource type="VideoStream" path="res://stage-3/assets/GAME OVER.ogv" id="5_lquwl"]
+[ext_resource type="VideoStream" uid="uid://ba2budlq8cpjv" path="res://stage-3/assets/GAME OVER.ogv" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="6_cahdn"]
+[ext_resource type="Texture2D" uid="uid://bd7k8p0h3sw1q" path="res://Buttons/try_again_button.png" id="6_show1"]
+[ext_resource type="Texture2D" uid="uid://dfxgy68rbkf4l" path="res://Buttons/Return_lab_button.png" id="8_t3dgp"]
+[ext_resource type="Texture2D" uid="uid://cf0x2s3p75evq" path="res://Drone_Level/assets/black.png" id="9_5tvn2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_378m6"]
+texture = ExtResource("6_show1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t3dgp"]
+texture = ExtResource("6_show1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5tvn2"]
+texture = ExtResource("6_show1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_enxor"]
+texture = ExtResource("8_t3dgp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yyq3c"]
+texture = ExtResource("8_t3dgp")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5kflw"]
+texture = ExtResource("8_t3dgp")
 
 [node name="main" type="Node2D"]
 scale = Vector2(0.869899, 1.16118)
@@ -13,7 +34,7 @@ scale = Vector2(0.869899, 1.16118)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(573, 324)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Ipad" type="Sprite2D" parent="."]
 position = Vector2(571.331, 315.196)
 scale = Vector2(1.59, 1.11)
 texture = ExtResource("3_1bvp3")
@@ -55,7 +76,7 @@ grow_horizontal = 2
 scale = Vector2(2.63, 2.63)
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+[node name="ScreenCrack overlay" type="Sprite2D" parent="CanvasLayer"]
 show_behind_parent = true
 top_level = true
 position = Vector2(499.5, 378.5)
@@ -71,7 +92,35 @@ stream = ExtResource("5_lquwl")
 [node name="gong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1bvp3")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_1bvp3")
+[node name="End" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="End"]
+offset_left = 359.0
+offset_top = 313.0
+offset_right = 643.0
+offset_bottom = 455.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_378m6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t3dgp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5tvn2")
+
+[node name="Win" type="CanvasLayer" parent="."]
+
+[node name="winButton" type="Button" parent="Win"]
+offset_left = 356.0
+offset_top = 547.0
+offset_right = 646.0
+offset_bottom = 687.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_enxor")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yyq3c")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5kflw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(650.65, 375.05)
+scale = Vector2(12.3846, 7.03116)
+texture = ExtResource("9_5tvn2")
 
 [node name="Menu button" parent="." instance=ExtResource("6_cahdn")]
+
+[connection signal="pressed" from="End/Button" to="TileMap" method="_on_button_pressed"]
+[connection signal="pressed" from="Win/winButton" to="TileMap" method="_on_win_button_pressed"]
