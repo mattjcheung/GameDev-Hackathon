@@ -50,7 +50,3 @@ func set_blend_position(input_x: int) -> void:
 	animTree.set("parameters/Walk/blend_position", input_x)
 	animTree.set("parameters/Jump/blend_position", input_x)
 	animTree.set("parameters/FallLoop/blend_position", input_x)
-
-
-func _on_key_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.

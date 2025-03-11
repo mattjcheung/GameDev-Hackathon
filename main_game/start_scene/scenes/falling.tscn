@@ -1,14 +1,15 @@
-[gd_scene load_steps=57 format=3 uid="uid://tlgpudutomr2"]
+[gd_scene load_steps=58 format=3 uid="uid://tlgpudutomr2"]
 
-[ext_resource type="Script" path="res://start_scene/scenes/snapshots.gd" id="1_8vbsj"]
+[ext_resource type="Script" uid="uid://bqu4owwx66dke" path="res://start_scene/scenes/snapshots.gd" id="1_8vbsj"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="1_f8kr5"]
 [ext_resource type="Texture2D" uid="uid://5fesihw47esn" path="res://assests/cave.png" id="1_lp86k"]
 [ext_resource type="Texture2D" uid="uid://ck42b5ldngw0d" path="res://assests/spritesheets/close_up_sprite.png" id="2_5m1er"]
 [ext_resource type="Texture2D" uid="uid://qw0srfe53dn" path="res://assests/spritesheets/falling.png" id="3_itulq"]
-[ext_resource type="Script" path="res://start_scene/scenes/door.gd" id="5_wdc5g"]
+[ext_resource type="Script" uid="uid://cihl4plmjqrar" path="res://start_scene/scenes/door.gd" id="5_wdc5g"]
 [ext_resource type="PackedScene" uid="uid://dblebw8qog0gv" path="res://Lab_Room/Lab_phone.tscn" id="6_7gban"]
 [ext_resource type="Texture2D" uid="uid://bmlcvfh285ck2" path="res://assests/spritesheets/door sprite.png" id="6_d03mp"]
 [ext_resource type="Texture2D" uid="uid://bnumu6wcp8pmx" path="res://assests/CaveTileset.png" id="6_wdc5g"]
-[ext_resource type="Script" path="res://start_scene/scenes/key.gd" id="7_d03mp"]
+[ext_resource type="Script" uid="uid://bxrlc4nas8rhm" path="res://start_scene/scenes/key.gd" id="7_d03mp"]
 [ext_resource type="Texture2D" uid="uid://drh3elfjwymjh" path="res://assests/spritesheets/key sprite.png" id="8_t2lx7"]
 [ext_resource type="PackedScene" uid="uid://dakdic0rxg512" path="res://start_scene/scenes/Player.tscn" id="9_ru5is"]
 
@@ -121,6 +122,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer/Menu button:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_r02th"]
@@ -235,11 +248,23 @@ tracks/8/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer/Menu button:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.49, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lp86k"]
 _data = {
-"RESET": SubResource("Animation_bufol"),
-"chasm": SubResource("Animation_r02th")
+&"RESET": SubResource("Animation_bufol"),
+&"chasm": SubResource("Animation_r02th")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdc5g"]
@@ -687,9 +712,12 @@ animations = [{
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_lp86k")
+&"": SubResource("AnimationLibrary_lp86k")
 }
 autoplay = "chasm"
+
+[node name="Menu button" parent="AnimationPlayer" instance=ExtResource("1_f8kr5")]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

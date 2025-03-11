@@ -1,19 +1,20 @@
-[gd_scene load_steps=696 format=3 uid="uid://dhly88l006eii"]
+[gd_scene load_steps=697 format=3 uid="uid://dhly88l006eii"]
 
-[ext_resource type="Script" path="res://start_scene/scenes/world.gd" id="1_4wyf3"]
+[ext_resource type="Script" uid="uid://dnobsi046ktjj" path="res://start_scene/scenes/world.gd" id="1_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="1_ffrh7"]
 [ext_resource type="Texture2D" uid="uid://vgkjukp1myf5" path="res://assests/spritesheets/planet.png" id="2_4wyf3"]
 [ext_resource type="FontFile" uid="uid://beocw03f5jwir" path="res://assests/Daydream.ttf" id="3_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://csowuf21k30ba" path="res://assests/ground.png" id="4_71j4m"]
 [ext_resource type="Texture2D" uid="uid://46btuqy4dq7p" path="res://assests/sky.png" id="5_qfnet"]
-[ext_resource type="Script" path="res://start_scene/scenes/npc.gd" id="6_i7141"]
+[ext_resource type="Script" uid="uid://bgyp8enet50a2" path="res://start_scene/scenes/npc.gd" id="6_i7141"]
 [ext_resource type="Texture2D" uid="uid://ceujd7ki4vaoe" path="res://assests/spritesheets/idle_right.png" id="6_qfnet"]
 [ext_resource type="PackedScene" uid="uid://dakdic0rxg512" path="res://start_scene/scenes/Player.tscn" id="7_i7141"]
 [ext_resource type="Texture2D" uid="uid://djm8ii3ry8k3r" path="res://assests/banana.png" id="9_7r4gi"]
 [ext_resource type="FontFile" uid="uid://oujphtt1i8pm" path="res://assests/VCR_OSD_MONO_1.001.ttf" id="10_w7kh3"]
-[ext_resource type="Script" path="res://start_scene/scenes/camera_2d.gd" id="11_e3hyu"]
+[ext_resource type="Script" uid="uid://bp3pranl62akf" path="res://start_scene/scenes/camera_2d.gd" id="11_e3hyu"]
 [ext_resource type="Texture2D" uid="uid://8kqacafn4fld" path="res://assests/trees.png" id="11_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://tlgpudutomr2" path="res://start_scene/scenes/falling.tscn" id="12_dss4m"]
-[ext_resource type="Script" path="res://start_scene/scenes/leaves.gd" id="12_xo05s"]
+[ext_resource type="Script" uid="uid://pax7nood2fgl" path="res://start_scene/scenes/leaves.gd" id="12_xo05s"]
 [ext_resource type="Texture2D" uid="uid://cian7xus1ulcl" path="res://assests/spritesheets/leaves-sprite.png" id="13_dss4m"]
 
 [sub_resource type="Animation" id="Animation_rwgxs"]
@@ -217,6 +218,18 @@ tracks/16/path = NodePath("../Leaves/AnimatedSprite2D:visible")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Menu button:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -445,11 +458,23 @@ tracks/16/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Menu button:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 16.5548, 16.8148),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k0juu"]
 _data = {
-"RESET": SubResource("Animation_rwgxs"),
-"cutscene": SubResource("Animation_4wyf3")
+&"RESET": SubResource("Animation_rwgxs"),
+&"cutscene": SubResource("Animation_4wyf3")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwgxs"]
@@ -5188,9 +5213,12 @@ animations = [{
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath(".")
 libraries = {
-"": SubResource("AnimationLibrary_k0juu")
+&"": SubResource("AnimationLibrary_k0juu")
 }
 autoplay = "cutscene"
+
+[node name="Menu button" parent="AnimationPlayer" instance=ExtResource("1_ffrh7")]
+visible = false
 
 [node name="space_background" type="ColorRect" parent="."]
 offset_left = -28.0
