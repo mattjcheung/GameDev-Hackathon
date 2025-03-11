@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1vi6bnu21mn5"]
+
+[ext_resource type="Script" path="res://TheBossFight/scenes/boss_battle_main.gd" id="1_17ivh"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="2_5toln"]
+
+[node name="BossBattleMain" type="Node2D" groups=["Manager"]]
+script = ExtResource("1_17ivh")
+
+[node name="SceneContainer" type="Node2D" parent="." groups=["Manager"]]
+
+[node name="CutsceneContainer" type="Node2D" parent="."]
+
+[node name="Menu button" parent="." instance=ExtResource("2_5toln")]

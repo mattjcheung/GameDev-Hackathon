@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://b20trny7ry12"]
+
+[ext_resource type="Script" uid="uid://c8ahy8cd4cosc" path="res://TheBossFight/scenes/boss_bullet.gd" id="1_xgetd"]
+[ext_resource type="Texture2D" uid="uid://fincwihu7pba" path="res://TheBossFight/assets/spritesheets/BulletSpriteSheet.png" id="2_ma55k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y25gk"]
+atlas = ExtResource("2_ma55k")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
+atlas = ExtResource("2_ma55k")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
+atlas = ExtResource("2_ma55k")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
+atlas = ExtResource("2_ma55k")
+region = Rect2(100, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
+atlas = ExtResource("2_ma55k")
+region = Rect2(150, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26lx3"]
+atlas = ExtResource("2_ma55k")
+region = Rect2(200, 50, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1cfmv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y25gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5glv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoqba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qncy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tamys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26lx3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y25gk"]
+size = Vector2(59, 12.5)
+
+[node name="Bullet" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_xgetd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.328007, 0.92712, 1)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_1cfmv")
+frame_progress = 0.163373
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-6, -5)
+scale = Vector2(25, 21.45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(29.5, 5.75)
+shape = SubResource("RectangleShape2D_y25gk")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

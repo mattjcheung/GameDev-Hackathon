@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgosvpg467jpt"]
+
+[ext_resource type="PackedScene" uid="uid://ccyrc0t1ggv8q" path="res://TheBossFight/scenes/ArenaPlatform.tscn" id="1_1g7wc"]
+
+[node name="ArenaLayer" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Platform" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(49, 6)
+
+[node name="Platform2" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(143, 6)
+
+[node name="Platform3" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(234, 6)
+
+[node name="Platform4" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(328, 6)
+
+[node name="Platform5" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(422, 6)
+
+[node name="Platform6" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(515, 6)
+
+[node name="Platform7" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(608, 6)
+
+[node name="Platform8" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(702, 6)
+
+[node name="Platform9" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(794, 6)
+
+[node name="Platform10" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(886, 6)
+
+[node name="Platform11" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(980, 6)
+
+[node name="Platform12" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(1073, 6)
+
+[node name="Platform13" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(1165, 6)
+
+[node name="Platform14" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(1259, 6)
+
+[node name="Platform15" parent="Node2D" instance=ExtResource("1_1g7wc")]
+position = Vector2(1350, 6)

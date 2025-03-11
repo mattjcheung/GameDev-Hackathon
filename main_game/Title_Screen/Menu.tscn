@@ -1,0 +1,101 @@
+[gd_scene load_steps=17 format=3 uid="uid://bd5ggwao22lha"]
+
+[ext_resource type="Script" uid="uid://clunibs20n8j2" path="res://Title_Screen/menu.gd" id="1_1iwca"]
+[ext_resource type="VideoStream" path="res://Title_Screen/background.ogv" id="2_elnvv"]
+[ext_resource type="Texture2D" uid="uid://c1cm60cvral42" path="res://Buttons/start_button.png" id="2_shfcn"]
+[ext_resource type="Texture2D" uid="uid://cf0x2s3p75evq" path="res://Drone_Level/assets/black.png" id="2_wpwt4"]
+[ext_resource type="Texture2D" uid="uid://be7jd70h60b07" path="res://Buttons/level_select_button.png" id="3_ckfx1"]
+[ext_resource type="Texture2D" uid="uid://cmquedfuddoqm" path="res://Buttons/exit_button.png" id="4_gbttw"]
+[ext_resource type="Texture2D" uid="uid://cvn01j8k571hc" path="res://Title_Screen/Title.png" id="6_jekja"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a848a"]
+texture = ExtResource("2_shfcn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sfai5"]
+texture = ExtResource("2_shfcn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lnkre"]
+texture = ExtResource("2_shfcn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vsr71"]
+texture = ExtResource("3_ckfx1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ig2oh"]
+texture = ExtResource("3_ckfx1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dhcj0"]
+texture = ExtResource("3_ckfx1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kitfo"]
+texture = ExtResource("4_gbttw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xu8lg"]
+texture = ExtResource("4_gbttw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxmpb"]
+texture = ExtResource("4_gbttw")
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_1iwca")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+z_index = -1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = -54.0
+offset_right = 1064.0
+offset_bottom = 766.0
+grow_horizontal = 2
+scale = Vector2(1.94, 1.94)
+stream = ExtResource("2_elnvv")
+loop = true
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(494.5, 378)
+scale = Vector2(4.88444, 3.47445)
+texture = ExtResource("2_wpwt4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Play" type="Button" parent="CanvasLayer"]
+offset_left = 415.0
+offset_top = 268.0
+offset_right = 556.0
+offset_bottom = 348.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_a848a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sfai5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lnkre")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Levels" type="Button" parent="CanvasLayer2"]
+offset_left = 415.0
+offset_top = 357.0
+offset_right = 559.0
+offset_bottom = 440.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_vsr71")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ig2oh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dhcj0")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="Exit" type="Button" parent="CanvasLayer3"]
+offset_left = 414.0
+offset_top = 451.0
+offset_right = 559.0
+offset_bottom = 533.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_kitfo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xu8lg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nxmpb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(601, 266)
+scale = Vector2(3.56797, 3.33007)
+texture = ExtResource("6_jekja")
+
+[connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer2/Levels" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="CanvasLayer3/Exit" to="." method="_on_exit_pressed"]

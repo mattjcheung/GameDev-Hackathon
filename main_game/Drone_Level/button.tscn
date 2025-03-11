@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfgxjlguu1o4x"]
+
+[ext_resource type="Texture2D" uid="uid://diklduto7yjht" path="res://Drone_Level/assets/button.png" id="1_bvxba"]
+[ext_resource type="Script" path="res://Drone_Level/button.gd" id="1_grjh8"]
+[ext_resource type="Texture2D" uid="uid://bnd4tbfpiyof1" path="res://Drone_Level/assets/button-pressed.png" id="2_1ntfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utrt3"]
+size = Vector2(140.5, 56.75)
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(555, 542)
+disable_mode = 2
+monitorable = false
+script = ExtResource("1_grjh8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(412, 221)
+scale = Vector2(2.30918, 2.67644)
+texture = ExtResource("2_1ntfv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(414, 224)
+scale = Vector2(2.38708, 2.26628)
+texture = ExtResource("1_bvxba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(405, 218)
+shape = SubResource("RectangleShape2D_utrt3")

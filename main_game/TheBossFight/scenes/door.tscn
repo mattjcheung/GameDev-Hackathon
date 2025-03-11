@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://c13tl02rtr6so"]
+
+[ext_resource type="Script" uid="uid://b8bofpdhvela7" path="res://TheBossFight/scripts/door.gd" id="1_83dcw"]
+[ext_resource type="Texture2D" uid="uid://bp3mih2j62ofd" path="res://TheBossFight/assets/Industrial Assets - Plus Pack/3. Industrial Assets - Plus Pack 32p/Door1/Door1_v1.0_Spritesheet.png" id="1_hpvv5"]
+[ext_resource type="PackedScene" uid="uid://bx3vs5dylcffe" path="res://TheBossFight/Interaction/InteractionArea/InteractionArea.tscn" id="3_la1wf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvdjg"]
+atlas = ExtResource("1_hpvv5")
+region = Rect2(0, 640, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83dcw"]
+atlas = ExtResource("1_hpvv5")
+region = Rect2(128, 640, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la1wf"]
+atlas = ExtResource("1_hpvv5")
+region = Rect2(64, 640, 32, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18pbm"]
+atlas = ExtResource("1_hpvv5")
+region = Rect2(96, 640, 32, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q5w8r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvdjg")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83dcw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la1wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18pbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83dcw")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t58dd"]
+size = Vector2(11, 127)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_18pbm"]
+radius = 24.0
+height = 144.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_q5w8r"]
+
+[node name="Door" type="StaticBody2D"]
+script = ExtResource("1_83dcw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q5w8r")
+animation = &"open"
+
+[node name="door" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 0.5)
+shape = SubResource("RectangleShape2D_t58dd")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_la1wf")]
+position = Vector2(0, 1)
+action_name = "to fix"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(-21, -2)
+shape = SubResource("CapsuleShape2D_18pbm")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -148.0
+offset_top = -62.0
+offset_right = -24.0
+offset_bottom = -36.0
+text = "Need Wrench!"
+label_settings = SubResource("LabelSettings_q5w8r")
+autowrap_mode = 2

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx70wwnw3nvsj"]
+
+[ext_resource type="Texture2D" uid="uid://n6vskwa37ihg" path="res://Lab_Room/assets/tilesStuff.png" id="1_pyp5h"]
+
+[node name="Page" type="Sprite2D"]
+texture = ExtResource("1_pyp5h")

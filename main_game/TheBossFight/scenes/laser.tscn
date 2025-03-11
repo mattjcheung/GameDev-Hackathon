@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://dikfjq6eciwtx"]
+
+[ext_resource type="Script" uid="uid://bxo87xl2eiot8" path="res://TheBossFight/scenes/laser.gd" id="1_xmihv"]
+
+[sub_resource type="Animation" id="Animation_a7dhc"]
+resource_name = "LaserFires"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.93333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.0392157), Color(1, 1, 1, 0.243137), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jjj73"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.517647)]
+}
+
+[sub_resource type="Animation" id="Animation_xmihv"]
+resource_name = "FadeOut"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.195611, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.482353), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_412cd"]
+_data = {
+&"FadeOut": SubResource("Animation_xmihv"),
+&"LaserFires": SubResource("Animation_a7dhc"),
+&"RESET": SubResource("Animation_jjj73")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8rul"]
+size = Vector2(10000, 6)
+
+[node name="Laser" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_xmihv")
+metadata/_edit_group_ = true
+
+[node name="Line2D" type="Line2D" parent="."]
+modulate = Color(1, 1, 1, 0.517647)
+rotation = 1.5708
+points = PackedVector2Array(-1.31134e-07, -3, 3.23674, -3, 6, -3)
+width = 10000.0
+default_color = Color(1, 0.03, 0.03, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Line2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_412cd")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_q8rul")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

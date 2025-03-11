@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://vpqdvi6e07q6"]
+
+[ext_resource type="Script" path="res://root.gd" id="1_nwaa7"]
+[ext_resource type="PackedScene" uid="uid://c7sw5a1uowc4y" path="res://Lab_Room/Lab_main.tscn" id="2_amyum"]
+[ext_resource type="PackedScene" uid="uid://cx6ifydwwsmyi" path="res://Drone_Level/Drone_Level.tscn" id="3_r5vxr"]
+
+[node name="Root" type="Node"]
+script = ExtResource("1_nwaa7")
+
+[node name="Main" parent="." instance=ExtResource("2_amyum")]
+
+[node name="Drone_Level" parent="." instance=ExtResource("3_r5vxr")]
+
+[connection signal="minigame" from="Main" to="." method="_on_main_minigame"]

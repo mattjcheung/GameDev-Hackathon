@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cu7w4q6q4ynh7"]
+
+[ext_resource type="Script" path="res://Lab_Room_2/access_panel.gd" id="1_jvjcj"]
+[ext_resource type="Texture2D" uid="uid://dqcl5022kjn6m" path="res://Lab_Room_2/assets/access-panel.png" id="1_sm6pi"]
+[ext_resource type="Script" path="res://Lab_Room_2/collision_shape_2d.gd" id="3_7vkji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kduyx"]
+size = Vector2(33.5, 45.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48os6"]
+size = Vector2(6.975, 13.1346)
+
+[node name="AccessPanel" type="StaticBody2D"]
+script = ExtResource("1_jvjcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(455, 179)
+scale = Vector2(1.77778, 1.8)
+texture = ExtResource("1_sm6pi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(454, 172)
+shape = SubResource("RectangleShape2D_kduyx")
+script = ExtResource("3_7vkji")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(455.75, 180.542)
+scale = Vector2(6.66667, -4.33333)
+shape = SubResource("RectangleShape2D_48os6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

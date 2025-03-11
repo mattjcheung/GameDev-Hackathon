@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvmw0xegtigt3"]
+
+[ext_resource type="Script" path="res://Drone_Level/fail.gd" id="1_iwp4q"]
+[ext_resource type="Texture2D" uid="uid://bd7k8p0h3sw1q" path="res://Buttons/try_again_button.png" id="2_a51oo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uquh0"]
+texture = ExtResource("2_a51oo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kj7sl"]
+texture = ExtResource("2_a51oo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ggm5"]
+texture = ExtResource("2_a51oo")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_iwp4q")
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 398.0
+offset_top = 293.0
+offset_right = 604.0
+offset_bottom = 421.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_uquh0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kj7sl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ggm5")
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

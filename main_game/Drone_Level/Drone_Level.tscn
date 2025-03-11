@@ -1,0 +1,88 @@
+[gd_scene load_steps=15 format=3 uid="uid://cx6ifydwwsmyi"]
+
+[ext_resource type="Script" path="res://Drone_Level/Drone_Level.gd" id="1_qw2c5"]
+[ext_resource type="PackedScene" uid="uid://pm6rk62u4nqq" path="res://Drone_Level/circuitry.tscn" id="2_clcgx"]
+[ext_resource type="Texture2D" uid="uid://c1x7uq1imibda" path="res://Drone_Level/assets/bgg.jpg" id="3_ylw05"]
+[ext_resource type="PackedScene" uid="uid://cwv1to3qg40vj" path="res://Drone_Level/drone.tscn" id="4_k36ix"]
+[ext_resource type="PackedScene" uid="uid://7s3e1yuxqwjb" path="res://Drone_Level/ground.tscn" id="5_vi0uk"]
+[ext_resource type="PackedScene" uid="uid://cfgxjlguu1o4x" path="res://Drone_Level/button.tscn" id="6_m7c4u"]
+[ext_resource type="Texture2D" uid="uid://c4rcc57fee576" path="res://Buttons/click to play_button.png" id="7_sb8gc"]
+[ext_resource type="Texture2D" uid="uid://dfxgy68rbkf4l" path="res://Buttons/Return_lab_button.png" id="8_rsm0s"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="9_58sb5"]
+[ext_resource type="Script" path="res://Drone_Level/end.gd" id="9_e1qj2"]
+[ext_resource type="PackedScene" uid="uid://cvmw0xegtigt3" path="res://Drone_Level/fail.tscn" id="9_haaq7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xgj27"]
+texture = ExtResource("8_rsm0s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u2ocb"]
+texture = ExtResource("8_rsm0s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yo2b6"]
+texture = ExtResource("8_rsm0s")
+
+[node name="Drone_Level" type="Node"]
+script = ExtResource("1_qw2c5")
+circuit_scene = ExtResource("2_clcgx")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(94, -110)
+scale = Vector2(0.944549, 1.27473)
+texture = ExtResource("3_ylw05")
+offset = Vector2(432, 384)
+
+[node name="Drone" parent="." instance=ExtResource("4_k36ix")]
+
+[node name="Ground" parent="." instance=ExtResource("5_vi0uk")]
+z_index = 1
+position = Vector2(-3, -180)
+monitorable = true
+priority = 1
+
+[node name="CircuitTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="ButtonTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Button" parent="." instance=ExtResource("6_m7c4u")]
+z_index = 1
+position = Vector2(658, 403)
+
+[node name="Title" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(489, 355)
+scale = Vector2(3.19447, 3.83499)
+texture = ExtResource("7_sb8gc")
+
+[node name="EndTimer" type="Timer" parent="."]
+
+[node name="Fail" parent="." instance=ExtResource("9_haaq7")]
+
+[node name="Menu button" parent="Fail" instance=ExtResource("9_58sb5")]
+
+[node name="End" type="CanvasLayer" parent="."]
+script = ExtResource("9_e1qj2")
+
+[node name="return_button" type="Button" parent="End"]
+offset_left = 359.0
+offset_top = 268.0
+offset_right = 613.0
+offset_bottom = 437.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_xgj27")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u2ocb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yo2b6")
+
+[connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
+[connection signal="hit" from="Ground" to="Drone" method="_on_ground_hit"]
+[connection signal="timeout" from="CircuitTimer" to="." method="_on_circuit_timer_timeout"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="ButtonTimer" to="." method="_on_button_timer_timeout"]
+[connection signal="hit" from="Button" to="." method="_on_button_hit"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_end_timer_timeout"]
+[connection signal="restart" from="Fail" to="." method="_on_fail_restart"]
+[connection signal="return_lab" from="End" to="." method="_on_end_return_lab"]
+[connection signal="pressed" from="End/return_button" to="." method="_on_button_pressed"]

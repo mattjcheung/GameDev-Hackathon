@@ -1,0 +1,63 @@
+[gd_scene load_steps=13 format=3 uid="uid://brrwqoreuw2o4"]
+
+[ext_resource type="Script" path="res://Lab_Room/Lab_main_2.gd" id="1_eanbj"]
+[ext_resource type="PackedScene" uid="uid://be2ilbacpejo3" path="res://Lab_Room/Lab.tscn" id="2_3auuj"]
+[ext_resource type="PackedScene" uid="uid://bajir8gidmg11" path="res://Lab_Room/monkey.tscn" id="3_5jh8p"]
+[ext_resource type="PackedScene" uid="uid://d00o0xpgxm5u" path="res://Lab_Room/beacon.tscn" id="4_vku0a"]
+[ext_resource type="PackedScene" uid="uid://cu7w4q6q4ynh7" path="res://Lab_Room/access_panel.tscn" id="5_w1va8"]
+[ext_resource type="PackedScene" uid="uid://nhtmbhg6eyno" path="res://Lab_Room/door.tscn" id="6_b0m0s"]
+[ext_resource type="PackedScene" uid="uid://8vll2l0ixeni" path="res://Lab_Room/table.tscn" id="7_ap5wx"]
+[ext_resource type="PackedScene" uid="uid://cbt3ka5e62wdm" path="res://Lab_Room/weapon_part.tscn" id="8_7tb32"]
+[ext_resource type="PackedScene" uid="uid://cx70wwnw3nvsj" path="res://Lab_Room/page.tscn" id="9_ruw62"]
+[ext_resource type="Texture2D" uid="uid://c2potko7t2o4j" path="res://Lab_Room/assets/note_2.png" id="10_xwdi8"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="10_ynhvx"]
+[ext_resource type="PackedScene" uid="uid://b2brr7ypk1g7t" path="res://Lab_Room/gun.tscn" id="12_5yncs"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_eanbj")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_3auuj")]
+
+[node name="monkey" parent="." instance=ExtResource("3_5jh8p")]
+z_index = 1
+position = Vector2(12, 198)
+
+[node name="Beacon" parent="." instance=ExtResource("4_vku0a")]
+position = Vector2(382, 230)
+
+[node name="AccessPanel" parent="." instance=ExtResource("5_w1va8")]
+position = Vector2(-125, 10)
+scale = Vector2(1.03887, 1.08767)
+
+[node name="Door" parent="." instance=ExtResource("6_b0m0s")]
+position = Vector2(492, 174)
+scale = Vector2(0.68, 0.640001)
+
+[node name="table" parent="." instance=ExtResource("7_ap5wx")]
+position = Vector2(290, 425)
+scale = Vector2(0.68, 0.719999)
+
+[node name="weapon_part" parent="." instance=ExtResource("8_7tb32")]
+position = Vector2(695, 341)
+rotation = 1.5708
+scale = Vector2(1.64, 1.68)
+
+[node name="Page" parent="." instance=ExtResource("9_ruw62")]
+visible = false
+position = Vector2(479, 384)
+texture = ExtResource("10_xwdi8")
+
+[node name="Label" type="Label" parent="Page"]
+offset_left = -68.0
+offset_top = 233.0
+offset_right = 88.0
+offset_bottom = 256.0
+text = "Press Enter To Close"
+
+[node name="Menu button" parent="." instance=ExtResource("10_ynhvx")]
+
+[node name="Gun" parent="." instance=ExtResource("12_5yncs")]
+
+[connection signal="access" from="AccessPanel" to="." method="_on_access_panel_access"]
+[connection signal="read" from="table" to="." method="_on_table_read"]
+[connection signal="weapon1" from="weapon_part" to="." method="_on_weapon_part_weapon_1"]

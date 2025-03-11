@@ -1,0 +1,125 @@
+[gd_scene load_steps=22 format=3 uid="uid://3iq6b0qlqc4"]
+
+[ext_resource type="Script" path="res://Title_Screen/Level_select.gd" id="1_vq8yc"]
+[ext_resource type="Texture2D" uid="uid://cf0x2s3p75evq" path="res://Drone_Level/assets/black.png" id="2_wexmj"]
+[ext_resource type="Texture2D" uid="uid://bajct67wr0qmx" path="res://Buttons/level_1_button.png" id="3_3ixwg"]
+[ext_resource type="VideoStream" path="res://Title_Screen/background.ogv" id="3_wurt1"]
+[ext_resource type="Texture2D" uid="uid://dpibhk2xjxtk1" path="res://Buttons/level_2_button.png" id="4_f0y5h"]
+[ext_resource type="Texture2D" uid="uid://dgv6n6fqh50a4" path="res://Buttons/level_3_button.png" id="5_h6760"]
+[ext_resource type="Texture2D" uid="uid://bun8ni31n16e5" path="res://Buttons/level_4_button.png" id="6_uognm"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="7_6nbr6"]
+[ext_resource type="Texture2D" uid="uid://ds1ovda6kmblt" path="res://Title_Screen/lvl_select_title.png" id="8_ktg62"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a848a"]
+texture = ExtResource("3_3ixwg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sfai5"]
+texture = ExtResource("3_3ixwg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lnkre"]
+texture = ExtResource("3_3ixwg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vsr71"]
+texture = ExtResource("4_f0y5h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ig2oh"]
+texture = ExtResource("4_f0y5h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dhcj0"]
+texture = ExtResource("4_f0y5h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kitfo"]
+texture = ExtResource("5_h6760")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xu8lg"]
+texture = ExtResource("5_h6760")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nxmpb"]
+texture = ExtResource("5_h6760")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rti6o"]
+texture = ExtResource("6_uognm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b2sdy"]
+texture = ExtResource("6_uognm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_amvx3"]
+texture = ExtResource("6_uognm")
+
+[node name="Level Select" type="Node2D"]
+script = ExtResource("1_vq8yc")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(508, 381)
+scale = Vector2(4.73111, 3.51222)
+texture = ExtResource("2_wexmj")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+self_modulate = Color(1, 0, 1, 1)
+z_index = -1
+offset_left = -384.0
+offset_top = -251.0
+offset_right = 540.0
+offset_bottom = 359.0
+scale = Vector2(2.33, 2.33)
+stream = ExtResource("3_wurt1")
+loop = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="lvl_1" type="Button" parent="CanvasLayer"]
+offset_left = 414.0
+offset_top = 218.0
+offset_right = 555.0
+offset_bottom = 298.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_a848a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_sfai5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lnkre")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="lvl_2" type="Button" parent="CanvasLayer2"]
+offset_left = 414.0
+offset_top = 307.0
+offset_right = 558.0
+offset_bottom = 390.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_vsr71")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ig2oh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_dhcj0")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="lvl_3" type="Button" parent="CanvasLayer3"]
+offset_left = 413.0
+offset_top = 401.0
+offset_right = 558.0
+offset_bottom = 483.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_kitfo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xu8lg")
+theme_override_styles/normal = SubResource("StyleBoxTexture_nxmpb")
+
+[node name="CanvasLayer4" type="CanvasLayer" parent="."]
+
+[node name="lvl_4" type="Button" parent="CanvasLayer4"]
+offset_left = 413.0
+offset_top = 495.0
+offset_right = 557.0
+offset_bottom = 577.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_rti6o")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b2sdy")
+theme_override_styles/normal = SubResource("StyleBoxTexture_amvx3")
+
+[node name="Menu button" parent="." instance=ExtResource("7_6nbr6")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(547, 334)
+scale = Vector2(2.86965, 2.90249)
+texture = ExtResource("8_ktg62")
+
+[connection signal="pressed" from="CanvasLayer/lvl_1" to="." method="_on_lvl_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/lvl_1" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer2/lvl_2" to="." method="_on_lvl_2_pressed"]
+[connection signal="pressed" from="CanvasLayer3/lvl_3" to="." method="_on_lvl_3_pressed"]
+[connection signal="pressed" from="CanvasLayer3/lvl_3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer4/lvl_4" to="." method="_on_lvl_4_pressed"]

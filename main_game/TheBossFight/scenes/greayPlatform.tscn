@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpsqfgcpiq3s6"]
+
+[ext_resource type="Texture2D" uid="uid://bysxqyheenimb" path="res://TheBossFight/assets/[PLUS] Industrial Tileset/5. Industrial Tileset - Plus Pack 32p/1_Industrial_Tileset_2B.png" id="1_uy13m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hoqn0"]
+size = Vector2(96, 0)
+
+[node name="Platform" type="AnimatableBody2D"]
+
+[node name="1IndustrialTileset2b" type="Sprite2D" parent="."]
+texture = ExtResource("1_uy13m")
+region_enabled = true
+region_rect = Rect2(64, 0, 97, 15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_hoqn0")
+one_way_collision = true
