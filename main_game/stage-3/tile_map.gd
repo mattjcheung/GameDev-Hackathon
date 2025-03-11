@@ -1,15 +1,21 @@
 extends TileMap
 
 var boardSize = 4
+var winningScore = 8
 enum Layers { hidden, revealed } #Hidden vs Revealed blocks
 var sourceNum = 0 
 const BlockCoords = Vector2(6, 2) # changing this breaks it idk why
 const BlockAlt = 1 #chooses which alternative tile to be the cover
 var revealedSpots = []
 var blockToAtlasPosition = {}
-var attempts = 3 #attempts remaining (10 seems best)
+var attempts = 15 #attempts remaining (10 seems best)
+var score = 0
+var running : bool = true
+
 
 func _ready() -> void:
+	$"../Win".visible = false
+	$"../End".visible = false
 	setup_blocks()
 	update_text()
 	pass 
@@ -43,27 +49,19 @@ func place_hidden_block(coords: Vector2):
 				sourceNum, BlockCoords, BlockAlt)
 
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			var globalClicked = event.position
-			var posClicked = Vector2(local_to_map(to_local(globalClicked)))
-			print(posClicked)
-			var currentTileAlt = get_cell_alternative_tile(Layers.hidden, posClicked)
-			if currentTileAlt == 1 and revealedSpots.size() < 2:
-				self.set_cell(Layers.hidden, posClicked, -1)
-				revealedSpots.append(posClicked)
-				if revealedSpots.size() == 2:
-					match_found()
-
-func match_found():
-	# blocks match
-	if blockToAtlasPosition[revealedSpots[0]] == blockToAtlasPosition[revealedSpots[1]]:
-		revealedSpots.clear()
-	else:
-		# blocks didnt match
-		match_failed()
-		update_text()
-
+	if running == true:
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+				var globalClicked = event.position
+				var posClicked = Vector2(local_to_map(to_local(globalClicked)))
+				print(posClicked)
+				var currentTileAlt = get_cell_alternative_tile(Layers.hidden, posClicked)
+				if currentTileAlt == 1 and revealedSpots.size() < 2:
+					self.set_cell(Layers.hidden, posClicked, -1)
+					revealedSpots.append(posClicked)
+					if revealedSpots.size() == 2:
+						match_found()
+	
 func update_text():
 	$"../CanvasLayer/attempts_label".text = "Attempts remaining: %d" % attempts
 
@@ -79,14 +77,26 @@ func play_game_over():
 func remove_red_text():
 	$"../CanvasLayer/attempts_label_red".text = " "
 	
+func match_found():
+	# blocks match
+	if blockToAtlasPosition[revealedSpots[0]] == blockToAtlasPosition[revealedSpots[1]]:
+		revealedSpots.clear()
+		score += 1
+		if score == winningScore:
+			win()
+	else:
+		# blocks didnt match
+		match_failed()
+		update_text()
+	
 func match_failed():
 	if attempts == 1:   #if they fail on last attempt
-		play_game_over() #game over
-		attempts -= 1
+		#play_game_over()
+		lose()
+		attempts = 0
 	if attempts > 1:   #if not on last attempt
 		play_gong()   # play gong
-		
-	attempts -= 1        #minus attempts and delay so they can process it
+		attempts -= 1   #minus attempts and delay so they can process it
 	update_text_to_red()
 	await get_tree().create_timer(1.5).timeout
 	remove_red_text()
@@ -96,6 +106,23 @@ func match_failed():
 	
 	revealedSpots.clear()
 
+func win():
+	$"../Win".visible = true
+	running = false
+	
+func lose():
+	$"../End".visible = true
+	running = false
+	
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://stage-3/main.tscn")
+	
+func _on_win_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Lab_Room/Lab_post_game_2.tscn")
