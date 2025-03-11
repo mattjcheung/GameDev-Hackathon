@@ -11,3 +11,4 @@ script = ExtResource("1_17ivh")
 [node name="CutsceneContainer" type="Node2D" parent="."]
 
 [node name="Menu button" parent="." instance=ExtResource("2_5toln")]
+layer = 3

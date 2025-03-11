@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bkb2o47o3r8j5"]
 
-[ext_resource type="Texture2D" uid="uid://bqd1r40il4pfv" path="res://TheBossFight/assets/spritesheets/try_again_button.png" id="1_3mdsj"]
-[ext_resource type="Script" uid="uid://bdbumgca0lqon" path="res://TheBossFight/scenes/end_screen.gd" id="1_cf6go"]
-[ext_resource type="Script" uid="uid://bwsd5xu8xn8ff" path="res://TheBossFight/scripts/menu_b.gd" id="2_gttju"]
+[ext_resource type="Script" path="res://TheBossFight/scenes/end_screen.gd" id="1_cf6go"]
+[ext_resource type="Script" path="res://TheBossFight/scripts/menu_b.gd" id="2_gttju"]
 [ext_resource type="Texture2D" uid="uid://c3h6x4tal1yum" path="res://TheBossFight/assets/menu_button.png" id="3_rdpjc"]
+[ext_resource type="Texture2D" uid="uid://bd7k8p0h3sw1q" path="res://Buttons/try_again_button.png" id="4_1fwpi"]
 [ext_resource type="Texture2D" uid="uid://c0ff1g8rtpy5n" path="res://TheBossFight/assets/CityScape.webp" id="4_cf6go"]
 
 [node name="EndScreen" type="Node2D"]
@@ -20,6 +20,7 @@ offset_bottom = -28.0
 script = ExtResource("2_gttju")
 
 [node name="MenuButton" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(3.99252, -81)
 scale = Vector2(2.23947, 2.04021)
 texture = ExtResource("3_rdpjc")
@@ -32,9 +33,9 @@ offset_right = 88.0
 offset_bottom = 101.0
 
 [node name="TryAgainButton" type="Sprite2D" parent="."]
-position = Vector2(3.04606e-05, 48)
+position = Vector2(505.056, 366)
 scale = Vector2(2.208, 2.04)
-texture = ExtResource("1_3mdsj")
+texture = ExtResource("4_1fwpi")
 
 [node name="CityScape" type="Sprite2D" parent="."]
 modulate = Color(0.6, 0.258, 0.258, 0.803922)
