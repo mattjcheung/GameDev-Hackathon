@@ -102,6 +102,6 @@ texture = ExtResource("6_hah0g")
 position = Vector2(475, 365)
 scale = Vector2(1.13438, 0.987979)
 sprite_frames = SubResource("SpriteFrames_mtoy0")
-frame_progress = 0.0748983
+frame_progress = 0.0584467
 
 [connection signal="timeout" from="thoughtTimer" to="." method="_on_thought_timer_timeout"]

@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func _on_access_panel_access() -> void:
-	get_tree().change_scene_to_file("res://Lab_Room/Lab_post_game_2.tscn")
+	get_tree().change_scene_to_file("res://stage-3/main.tscn")
 	
 
 

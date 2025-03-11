@@ -43,7 +43,7 @@ priority = 1
 wait_time = 1.5
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 30.0
 
 [node name="ButtonTimer" type="Timer" parent="."]
 wait_time = 5.0
