@@ -7,6 +7,7 @@ func _ready():
 	$weapon2_thought.hide()
 	$weapon3_thought.hide()
 	$weapon4_thought.hide()
+	$AnimatedSprite2D.play("default")
 	
 func _physics_process(delta):
 	var direction = Vector2.ZERO  # Stores movement direction

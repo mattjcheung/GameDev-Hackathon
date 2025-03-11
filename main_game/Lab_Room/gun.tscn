@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b2brr7ypk1g7t"]
 
-[ext_resource type="Script" path="res://gun.gd" id="1_buwvv"]
+[ext_resource type="Script" path="res://Lab_Room/gun.gd" id="1_buwvv"]
 [ext_resource type="Texture2D" uid="uid://cyoppyt7tpubx" path="res://Lab_Room/assets/GunSprite.png" id="2_qyml1"]
 [ext_resource type="Texture2D" uid="uid://l300q76lq3py" path="res://Lab_Room/assets/GunSprite_1.png" id="3_nwi0t"]
 [ext_resource type="Texture2D" uid="uid://cdr37qqwcgkcu" path="res://Lab_Room/assets/GunSprite_2.png" id="4_ex41a"]

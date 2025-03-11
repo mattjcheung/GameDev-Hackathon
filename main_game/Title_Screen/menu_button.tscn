@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bekhfx7rlge5c"]
 
-[ext_resource type="Script" path="res://menu_button.gd" id="1_rvjdc"]
+[ext_resource type="Script" path="res://Title_Screen/menu_button.gd" id="1_rvjdc"]
 [ext_resource type="Texture2D" uid="uid://ce7ntcgwnuflg" path="res://Buttons/menu_button.png" id="2_qwasd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aklko"]

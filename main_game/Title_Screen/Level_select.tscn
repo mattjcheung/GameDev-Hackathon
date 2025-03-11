@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dpibhk2xjxtk1" path="res://Buttons/level_2_button.png" id="4_f0y5h"]
 [ext_resource type="Texture2D" uid="uid://dgv6n6fqh50a4" path="res://Buttons/level_3_button.png" id="5_h6760"]
 [ext_resource type="Texture2D" uid="uid://bun8ni31n16e5" path="res://Buttons/level_4_button.png" id="6_uognm"]
-[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://menu_button.tscn" id="7_6nbr6"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="7_6nbr6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a848a"]
 texture = ExtResource("3_3ixwg")
@@ -48,8 +48,8 @@ texture = ExtResource("6_uognm")
 script = ExtResource("1_vq8yc")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(510, 387)
-scale = Vector2(4.73111, 3.44222)
+position = Vector2(513, 373.125)
+scale = Vector2(4.73111, 3.51222)
 texture = ExtResource("2_wexmj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -98,9 +98,9 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_amvx3")
 
 [node name="Menu button" parent="." instance=ExtResource("7_6nbr6")]
 
-[connection signal="pressed" from="CanvasLayer/lvl_1" to="." method="_on_lvl_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/lvl_1" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/lvl_1" to="." method="_on_lvl_1_pressed"]
 [connection signal="pressed" from="CanvasLayer2/lvl_2" to="." method="_on_lvl_2_pressed"]
-[connection signal="pressed" from="CanvasLayer3/lvl_3" to="." method="_on_lvl_3_pressed"]
 [connection signal="pressed" from="CanvasLayer3/lvl_3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer3/lvl_3" to="." method="_on_lvl_3_pressed"]
 [connection signal="pressed" from="CanvasLayer4/lvl_4" to="." method="_on_lvl_4_pressed"]

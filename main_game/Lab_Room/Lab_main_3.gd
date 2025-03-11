@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func _on_access_panel_access() -> void:
-	get_tree().change_scene_to_file("res://Phone_scenes/phone_scene_4.tscn")
+	get_tree().change_scene_to_file("res://Captcha_Level/captcha.tscn")
 	
 
 

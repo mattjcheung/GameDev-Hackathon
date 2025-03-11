@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cfgxjlguu1o4x" path="res://Drone_Level/button.tscn" id="6_m7c4u"]
 [ext_resource type="Texture2D" uid="uid://c4rcc57fee576" path="res://Buttons/click to play_button.png" id="7_sb8gc"]
 [ext_resource type="Texture2D" uid="uid://dfxgy68rbkf4l" path="res://Buttons/Return_lab_button.png" id="8_rsm0s"]
-[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://menu_button.tscn" id="9_58sb5"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="9_58sb5"]
 [ext_resource type="Script" path="res://Drone_Level/end.gd" id="9_e1qj2"]
 [ext_resource type="PackedScene" uid="uid://cvmw0xegtigt3" path="res://Drone_Level/fail.tscn" id="9_haaq7"]
 

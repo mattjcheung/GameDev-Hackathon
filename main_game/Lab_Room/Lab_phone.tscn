@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://8vll2l0ixeni" path="res://Lab_Room/table.tscn" id="7_5ps7r"]
 [ext_resource type="PackedScene" uid="uid://ohcfqkc232o6" path="res://Lab_Room/phone_collect.tscn" id="8_6pdhg"]
 [ext_resource type="PackedScene" uid="uid://cbt3ka5e62wdm" path="res://Lab_Room/weapon_part.tscn" id="9_wcl3m"]
-[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://menu_button.tscn" id="10_qdltj"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="10_qdltj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fl48w"]
 size = Vector2(17.5, 76)

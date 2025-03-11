@@ -37,8 +37,8 @@ texture = ExtResource("4_gbttw")
 script = ExtResource("1_1iwca")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(496, 378.375)
-scale = Vector2(4.45111, 3.32778)
+position = Vector2(496, 361.875)
+scale = Vector2(4.45111, 3.47445)
 texture = ExtResource("2_wpwt4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

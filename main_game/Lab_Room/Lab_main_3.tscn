@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cbt3ka5e62wdm" path="res://Lab_Room/weapon_part.tscn" id="8_pbxmj"]
 [ext_resource type="PackedScene" uid="uid://cx70wwnw3nvsj" path="res://Lab_Room/page.tscn" id="9_7awue"]
 [ext_resource type="Texture2D" uid="uid://dnqmca8m5x8xe" path="res://Lab_Room/assets/note_3.png" id="10_dhspq"]
-[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://menu_button.tscn" id="10_mbwnd"]
+[ext_resource type="PackedScene" uid="uid://bekhfx7rlge5c" path="res://Title_Screen/menu_button.tscn" id="10_mbwnd"]
 [ext_resource type="PackedScene" uid="uid://b2brr7ypk1g7t" path="res://Lab_Room/gun.tscn" id="12_mu5j1"]
 
 [node name="Main" type="Node2D"]

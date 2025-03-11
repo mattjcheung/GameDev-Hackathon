@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bajir8gidmg11"]
+[gd_scene load_steps=16 format=3 uid="uid://bajir8gidmg11"]
 
 [ext_resource type="Script" path="res://Lab_Room/monkey.gd" id="1_8imnn"]
 [ext_resource type="Texture2D" uid="uid://dw4h82ar477rn" path="res://Lab_Room/assets/monkey_temp.png" id="2_tmb1o"]
@@ -6,14 +6,66 @@
 [ext_resource type="Texture2D" uid="uid://dspjkffv0xnja" path="res://Lab_Room/assets/thought_2.png" id="4_30wmx"]
 [ext_resource type="Texture2D" uid="uid://qsabso6fpr4y" path="res://Lab_Room/assets/thought_3.png" id="5_xhtal"]
 [ext_resource type="Texture2D" uid="uid://w2213n0ye6g4" path="res://Lab_Room/assets/thought_4.png" id="6_hah0g"]
+[ext_resource type="Texture2D" uid="uid://b0j7od00magm4" path="res://Lab_Room/assets/monkeyStraightUpIdle.png" id="7_rudtc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mekyh"]
 size = Vector2(1058.33, 1151.29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1humh"]
+atlas = ExtResource("7_rudtc")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f486"]
+atlas = ExtResource("7_rudtc")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttfjo"]
+atlas = ExtResource("7_rudtc")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_momre"]
+atlas = ExtResource("7_rudtc")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l687b"]
+atlas = ExtResource("7_rudtc")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0tfw"]
+atlas = ExtResource("7_rudtc")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mtoy0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1humh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f486")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttfjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_momre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l687b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0tfw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="monkey" type="CharacterBody2D"]
 script = ExtResource("1_8imnn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(475, 363.563)
 scale = Vector2(0.0375, 0.0350859)
 texture = ExtResource("2_tmb1o")
@@ -45,5 +97,11 @@ texture = ExtResource("5_xhtal")
 visible = false
 position = Vector2(569, 372)
 texture = ExtResource("6_hah0g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(475, 365)
+scale = Vector2(1.13438, 0.987979)
+sprite_frames = SubResource("SpriteFrames_mtoy0")
+frame_progress = 0.0748983
 
 [connection signal="timeout" from="thoughtTimer" to="." method="_on_thought_timer_timeout"]
