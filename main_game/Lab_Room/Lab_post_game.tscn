@@ -23,10 +23,10 @@ script = ExtResource("1_ac4j4")
 
 [node name="monkey" parent="." instance=ExtResource("3_dvn2d")]
 z_index = 1
-position = Vector2(-127, -102)
+position = Vector2(-125, -101)
 
 [node name="Beacon" parent="." instance=ExtResource("4_7d3ss")]
-position = Vector2(405, 204)
+position = Vector2(386, 230)
 
 [node name="AccessPanel" parent="." instance=ExtResource("5_uc2an")]
 position = Vector2(-125, 10)

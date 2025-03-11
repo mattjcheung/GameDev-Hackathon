@@ -7,6 +7,8 @@ var y = 400
 
 func _ready():
 	body_entered.connect(_on_body_entered)
+	position.x = x
+	position.y = y
 
 
 func start():
@@ -16,9 +18,9 @@ func start():
 	position.x = x
 	position.y = y
 	
+	
 func appear():
 	$Sprite2D.visible = true
-
 	$CollisionShape2D.disabled = false
 	
 	

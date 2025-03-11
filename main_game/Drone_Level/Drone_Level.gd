@@ -14,7 +14,7 @@ const CIRCUIT_DELAY : int = 100
 const CIRCUIT_RANGE : int = 150
 var time_elapsed : bool = false
 var button_visible : bool = false
-var run_time : int = 15
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +37,8 @@ func new_game():
 	get_tree().call_group("circuits", "queue_free")
 	circuits.clear()
 	$Button.start()
+	$Button.position.x = 680
+	$Button.position.y= 400
 	time_elapsed = false
 	
 	
@@ -98,7 +100,6 @@ func check_top():
 func stop_game():
 	$CircuitTimer.stop()
 	$GameTimer.stop()
-	$ButtonTimer.stop()
 	$Drone.flying = false
 	game_running=false
 	game_over = true
@@ -115,12 +116,11 @@ func _on_circuit_timer_timeout() -> void:
 
 func _on_game_timer_timeout() -> void:
 	time_elapsed = true
-	$ButtonTimer.start()
-	
-
-func _on_button_timer_timeout() -> void:
 	button_visible = true
 	$Button.appear()
+	
+
+
 
 
 func _on_button_hit() -> void:
@@ -146,8 +146,9 @@ func _on_end_timer_timeout() -> void:
 
 
 func _on_fail_restart() -> void:
-	$Fail.hide()
-	new_game()
+	#$Fail.hide()
+	#new_game()
+	get_tree().change_scene_to_file("res://Drone_Level/Drone_Level.tscn")
 	
 
 

@@ -24,6 +24,7 @@ scale = Vector2(0.0374999, 0.0350859)
 shape = SubResource("RectangleShape2D_mekyh")
 
 [node name="weapon1_thought" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(569, 373)
 texture = ExtResource("3_7l3xb")
 
@@ -31,14 +32,17 @@ texture = ExtResource("3_7l3xb")
 wait_time = 5.0
 
 [node name="weapon2_thought" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(571, 371)
 texture = ExtResource("4_30wmx")
 
 [node name="weapon3_thought" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(569, 370)
 texture = ExtResource("5_xhtal")
 
 [node name="weapon4_thought" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(569, 372)
 texture = ExtResource("6_hah0g")
 

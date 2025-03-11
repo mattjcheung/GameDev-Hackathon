@@ -14,3 +14,6 @@ func _process(delta: float) -> void:
 func activate() -> void:
 	$Off.hide()
 	$On.show()
+	$On.play("on_sequence")
+	await $On.animation_finished 
+	$On.play("default")
